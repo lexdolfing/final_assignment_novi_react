@@ -1,9 +1,13 @@
 import './DemoOverview.css';
 import React from "react";
+import NavigationBar from "../../components/navigationBar/NavigationBar";
 
 
 export default function DemoOverview() {
     return (
-        <h1>DemoOverview</h1>
+        <>
+            <NavigationBar/>
+            <h1>DemoOverview</h1>
+        </>
     )
 }
