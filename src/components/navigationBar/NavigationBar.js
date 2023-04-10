@@ -1,15 +1,17 @@
 import React from "react";
 import './NavigationBar.css';
-import {Link} from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import sliders from '../../assets/5094333.jpg'
 
 export default function NavigationBar(){
 
     return(
         <nav className='navigation_bar'>
-            <Link to="/" className='link'>Home</Link>
-            <Link to="/drop-your-demo" className='link'>Demo Drop</Link>
-            <Link to="/sign-in" className='link'>Login</Link>
-            <Link to="/sign-up" className='link'>Register</Link>
+            <NavLink to="/" className={({ isActive }) => isActive ? 'active-link' : 'default-link'} >Home</NavLink>
+            <NavLink to="/drop-your-demo" className={({ isActive }) => isActive ? 'active-link' : 'default-link'}>Demo Drop</NavLink>
+            <img src={sliders} alt="logo of a headphone" className="sliders_logo"/>
+            <NavLink to="/sign-in" className={({ isActive }) => isActive ? 'active-link' : 'default-link'}>Login</NavLink>
+            <NavLink to="/sign-up" className={({ isActive }) => isActive ? 'active-link' : 'default-link'}>Register</NavLink>
         </nav>
     )
 }
