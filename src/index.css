@@ -5,6 +5,14 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  color: lightgray;
+}
+
+.page-body {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 @media screen and (min-width: 576px) {
@@ -12,17 +20,20 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    border: 2px black solid;
   }
 
   .inner-container {
     display:flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     flex-basis: 1400px;
     flex-shrink: 1;
     flex-grow: 0;
     margin: 0 20px 0 20px;
     padding: 20px;
+    border: 2px dashed green;
   }
 
 

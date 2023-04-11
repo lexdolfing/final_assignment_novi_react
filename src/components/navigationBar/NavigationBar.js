@@ -1,7 +1,7 @@
 import React from "react";
 import './NavigationBar.css';
 import { NavLink } from "react-router-dom";
-import sliders from '../../assets/5094333.jpg'
+import sliders from '../../assets/slider-logo.jpg'
 
 export default function NavigationBar(){
 
