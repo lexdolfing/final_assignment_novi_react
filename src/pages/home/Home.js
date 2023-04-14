@@ -3,6 +3,7 @@ import '../../index.css'
 import React from "react";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import {NavLink, useNavigate} from "react-router-dom";
+import Button from "../../components/button/button";
 
 export default function Home() {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function Home() {
             <body className="page-body">
             <section className="outer-container first-outer-container">
                 <article className="inner-container first-section">
-                    <button onClick={handleClick}>Drop your demo here</button>
+                    <Button onClick={handleClick} button_content="Drop your demo here" bigOrSmall="big-button"/>
                 </article>
             </section>
 
@@ -33,7 +34,7 @@ export default function Home() {
                         aspernatur consectetur cum cumque delectus, impedit incidunt iure laudantium molestias
                         perferendis placeat quas quia quis ratione reprehenderit temporibus unde, ut. Aut culpa cum
                         dolorem illum in necessitatibus quis repellendus veritatis! </p>
-                    <button onClick={handleClick}>Drop your demo here</button>
+                    <Button onClick={handleClick} button_content="Drop your demo here" bigOrSmall="small-button"/>
                 </article>
             </section>
 
