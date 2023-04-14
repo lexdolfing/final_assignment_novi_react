@@ -4,6 +4,7 @@ import React from "react";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import {NavLink, useNavigate} from "react-router-dom";
 import Button from "../../components/button/button";
+import Footer from "../../components/footer/Footer";
 
 export default function Home() {
     const navigate = useNavigate();
@@ -40,6 +41,7 @@ export default function Home() {
 
             {/*ADD FOOTER*/}
             </body>
+            <Footer />
         </>
     )
 }

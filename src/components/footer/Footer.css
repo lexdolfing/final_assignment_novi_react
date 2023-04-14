@@ -1,0 +1,16 @@
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+
+}
+
+
+
+.company-info {
+    position: absolute;
+    right: 0;
+    padding-right: 30px;
+}
