@@ -5,6 +5,7 @@ button {
     color: lightgray;
     font-size: 20px;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 
