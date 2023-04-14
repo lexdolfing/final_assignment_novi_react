@@ -9,7 +9,6 @@
     .first-section {
         position: relative;
         height: 60vh;
-
     }
 
     .first-section::after {
@@ -24,6 +23,21 @@
         position: absolute;
         bottom: 15px;
     }
+
+    .second-section {
+        height: auto;
+    }
+
+    .pitch {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .pitch-paragraph {
+        max-width: 600px;
+    }
+
 
 
 }
