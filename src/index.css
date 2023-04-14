@@ -20,7 +20,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    border: 2px black solid;
   }
 
   .inner-container {
@@ -33,7 +32,7 @@
     flex-grow: 0;
     margin: 0 20px 0 20px;
     padding: 20px;
-    border: 2px dashed green;
+    gap: 30px;
   }
 
 
