@@ -51,8 +51,6 @@ export default function Home() {
                 <Button onClick={handleClick} button_content="Drop your demo here" bigOrSmall="small-button"/>
             </article>
         </section>
-
-        {/*ADD FOOTER*/}
         </body>
         <Footer/>
     </>)

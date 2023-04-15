@@ -1,0 +1,17 @@
+.form-container {
+    border: 4px solid white;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 12px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 5px;
+    color: black;
+}
