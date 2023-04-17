@@ -15,3 +15,7 @@ input, textarea {
     padding: 5px;
     color: black;
 }
+
+.error-message {
+    color: red;
+}
