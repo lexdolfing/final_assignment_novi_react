@@ -6,6 +6,8 @@ button {
     font-size: 20px;
     text-transform: uppercase;
     cursor: pointer;
+    display: block;
+    margin: 0 auto;
 }
 
 
