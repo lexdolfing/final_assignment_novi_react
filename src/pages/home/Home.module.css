@@ -1,6 +1,6 @@
 
 @media screen and (min-width: 576px) {
-.first-outer-container{
+.first-outer-container {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url('../../assets/Home-page-photo.jpeg');
     background-size: cover;
     background-position: center;

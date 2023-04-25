@@ -1,13 +1,18 @@
-import './DropDemo.css';
+import styles from './DropDemo.module.css';
+import stylesIndex from '../../index.module.css'
 import React from "react";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import {useForm} from 'react-hook-form';
 import Footer from "../../components/footer/Footer";
-import Button from "../../components/button/button";
+import Button from "../../components/button/Button";
 import FormInput from "../../components/formInput/FormInput";
 
 
 export default function DropDemo() {
+    // Make one string to combine a normal css classname with a modules CSS classname.
+    const innerContainerClassName = `${stylesIndex['inner-container']}`;
+    const formContainerClassName = `${innerContainerClassName} ${styles.formContainer}`;
+
     const {register, handleSubmit, formState: {errors}} = useForm({
         mode: 'onTouched'
     });
@@ -20,8 +25,8 @@ export default function DropDemo() {
     return (
         <>
             <NavigationBar/>
-            <section className="outer-container">
-                <article className="inner-container form-container">
+            <section className={stylesIndex['outer-container']}>
+                <article className={formContainerClassName}>
                     <h1>Demo drop</h1>
                     <p>Drop your demo here. <br/>
                         We will contact you within 14 days.</p>
@@ -40,6 +45,7 @@ export default function DropDemo() {
                                        }
                                    }}
                                    errors={errors}
+                                   className={styles.input}
                         />
                         <FormInput htmlFor="song-name-field"
                                    labelText="Song name*"
@@ -54,6 +60,7 @@ export default function DropDemo() {
                                        }
                                    }}
                                    errors={errors}
+                                   className={styles.input}
                         />
                         <FormInput htmlFor="email-field"
                                    labelText="E-mail address*"
@@ -72,6 +79,7 @@ export default function DropDemo() {
                                        },
                                    }}
                                    errors={errors}
+                                   className={styles.input}
                         />
 
                         <FormInput htmlFor="song-file-field"
@@ -94,10 +102,11 @@ export default function DropDemo() {
                                                return true;
                                            }},
                                    }}
+                                   className={styles.input}
                         />
                         <label htmlFor="demo-informarion-field">
                             Additional information about your demo
-                            <textarea id="demo-information-field" cols="30" rows="10"
+                            <textarea id="demo-information-field" cols="30" rows="10" className={styles.textarea}
                                       placeholder="Tell us about what inspired you in producing this demo and what makes it unique"
                                       {...register("demo-information", {
                                           maxLength: {
@@ -107,7 +116,7 @@ export default function DropDemo() {
                                       })}>
                         </textarea>
                             {errors["demo-information"] &&
-                                <p className="error-message">{errors["demo-information"].message}</p>}
+                                <p className={styles["error-message"]}>{errors["demo-information"].message}</p>}
                         </label>
                         <Button buttonType="onSubmit" onClick={handleSubmit} button_content="Send"
                                 bigOrSmall="small-button"/>

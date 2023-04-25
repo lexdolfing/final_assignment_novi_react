@@ -1,4 +1,4 @@
-import './RegisterAdmin.css';
+import styles from './RegisterAdmin.module.css';
 import React from "react";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 

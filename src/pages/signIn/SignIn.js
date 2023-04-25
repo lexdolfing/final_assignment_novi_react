@@ -1,4 +1,4 @@
-import './SignIn.css';
+import styles from './SignIn.module.css';
 import React from "react";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 

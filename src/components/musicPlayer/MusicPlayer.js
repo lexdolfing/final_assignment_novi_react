@@ -1,2 +1,2 @@
 import React from "react";
-import './MusicPlayer.css';
+import styles from './MusicPlayer.module.css';

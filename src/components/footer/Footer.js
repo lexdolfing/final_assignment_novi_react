@@ -1,16 +1,17 @@
 import React from "react";
-import './Footer.css'
+import styles from './Footer.module.css'
+import stylesIndex from '../../index.module.css'
 import Logo from "../logo/Logo";
-import '../../index.css'
+import '../../index.module.css'
 
 export default function Footer() {
     return (
-        <section className="outer-container">
+        <section className={stylesIndex['outer-container']}>
 
-
-        <footer className="inner-container">
+        <section className={stylesIndex['inner-container']}>
+        <footer className={styles.footer}>
             <Logo />
-            <p className="company-info">
+            <p className={styles.companyInfo}>
                 Elevate Records inc. <br/>
                 Coolsingel 47F <br/>
                 3012 AA Rotterdam <br/>
@@ -18,6 +19,7 @@ export default function Footer() {
             </p>
 
         </footer>
+        </section>
         </section>
 
     )

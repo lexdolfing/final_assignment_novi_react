@@ -1,4 +1,4 @@
-import './DemoOverview.css';
+import styles from './DemoOverview.module.css';
 import React from "react";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 
