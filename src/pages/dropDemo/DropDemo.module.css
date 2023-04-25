@@ -2,7 +2,7 @@
     border: 4px solid white;
 }
 
-h1 {
+.formTitle {
     text-transform: uppercase;
 }
 
@@ -10,12 +10,12 @@ p {
     font-size: 12px;
 }
 
-.input, .textarea {
+.info {
+    text-align: center;
+}
+
+.textarea {
     width: 100%;
     padding: 5px;
     color: black;
-}
-
-.error-message {
-    color: red;
 }
