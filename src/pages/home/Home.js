@@ -26,7 +26,7 @@ export default function Home() {
 
         <section className={stylesIndex['outer-container']}>
             <article className={classNameInnerContainerTwo}>
-                <h2>About Elevate Records</h2>
+                <h1>About Elevate Records</h1>
                 <article className={styles.pitch}>
                 <p className={styles['pitch-paragraph']}>Welcome to Elevate Records, the Dutch record company that's all about helping talented DJs rise
                     to the top. Are you a DJ looking to take your music career to the next level? Then you've come

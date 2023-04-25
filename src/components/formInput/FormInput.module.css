@@ -7,3 +7,8 @@
 .error-message {
     color: red;
 }
+
+label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}

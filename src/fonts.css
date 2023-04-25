@@ -1,6 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Iceberg&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Roboto:wght@400;500;700&display=swap');
 
 @font-face {
     font-family: 'Iceberg', cursive;
+}
+
+@font-face {
+    font-family: 'Roboto', sans-serif;
 }
 
