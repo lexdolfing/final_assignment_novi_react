@@ -124,7 +124,6 @@ export default function DropDemo() {
                 </article>
             </section>
             <Footer/>
-
         </>
     )
 }

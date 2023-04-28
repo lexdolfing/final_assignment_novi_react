@@ -9,6 +9,7 @@
     .first-section {
         position: relative;
         height: 60vh;
+        max-width: 800px;
     }
 
     .first-section::after {
