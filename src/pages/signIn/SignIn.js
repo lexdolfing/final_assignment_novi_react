@@ -10,6 +10,8 @@ import Button from "../../components/button/Button";
 
 
 export default function SignIn() {
+    const innerContainerClassName = `${stylesIndex['inner-container']}`;
+    const formContainerClassName = `${innerContainerClassName} ${stylesForm['form-container']}`;
     const {
         register,
         handleSubmit,
@@ -25,16 +27,17 @@ export default function SignIn() {
     }
     return (
         <>
+            <body className={stylesIndex['page-body']}>
             <NavigationBar/>
-            <body className={stylesIndex['outer-container']}>
-            <section className={stylesIndex['inner-container']}>
+            <section className={stylesIndex['outer-container']}>
+            <section className={formContainerClassName}>
                 <h1>If you have an account, you can sign in here</h1>
-                <section className={stylesForm['form-container']}>
 
-                <form onSubmit={handleSubmit(handleFormSubmit)}>
+
+                <form onSubmit={handleSubmit(handleFormSubmit)} className={stylesForm.form}>
                     <FormInput
                         htmlFor="email-field"
-                        labelText="E-mail address*"
+                        labelText="E-mail address"
                         type="email"
                         id="email-field"
                         register={register}
@@ -42,7 +45,7 @@ export default function SignIn() {
                         validationRules={{
                             required: {
                                 value: true,
-                                message: 'E-mail address is required',
+                                message: 'Fill in your e-mail address',
                             },
                             validate: (value) => {
                                 const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -55,7 +58,7 @@ export default function SignIn() {
 
                     <FormInput
                         htmlFor="password-field"
-                        labelText="password*"
+                        labelText="password"
                         type="password"
                         id="password-field"
                         register={register}
@@ -80,10 +83,12 @@ export default function SignIn() {
                             bigOrSmall="small-button"/>
 
                 </form>
-                </section>
+
             </section>
-            </body>
+            </section>
+
             <Footer />
+            </body>
         </>
     )
 }

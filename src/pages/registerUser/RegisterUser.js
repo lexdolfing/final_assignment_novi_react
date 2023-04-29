@@ -33,7 +33,7 @@ export default function RegisterUser() {
                 <article className={formContainerClassName}>
                     <h1 className={stylesForm.formTitle}>Demo drop registration</h1>
                     <p>Create a profile here to drop your first demo</p>
-                    <form onSubmit={handleSubmit(handleFormSubmit)}>
+                    <form onSubmit={handleSubmit(handleFormSubmit)} className={stylesForm.form}>
                         <FormInput
                             htmlFor="first-name-field"
                             labelText="First name*"
@@ -157,12 +157,18 @@ export default function RegisterUser() {
                             registerCallback="profile-picture"
                             validationRules={{
                                 validate: {
-                                    maxSize: (fileList) =>
-                                        fileList[0].size <= 5 * 1024 * 1024 ||
-                                        'File size should be less than 5 MB',
-                                    allowedTypes: (fileList) =>
-                                        ['image.jpeg', 'image/png'].includes(fileList[0].type
-                                        ) || 'Only JPEG and PNG files are allowed',
+                                    maxSize: (fileList) => {
+                                        if (fileList.length === 0) {
+                                            return true; // return true if no file is uploaded
+                                        }
+                                        return fileList[0].size <= 5 * 1024 * 1024 || 'File size should be less than 5 MB';
+                                    },
+                                    allowedTypes: (fileList) => {
+                                        if (fileList.length === 0) {
+                                            return true; // return true if no file is uploaded
+                                        }
+                                        return ['image/jpeg', 'image/png'].includes(fileList[0].type) || 'Only JPEG and PNG files are allowed';
+                                    },
                                 },
                             }}
                             className='input'
@@ -180,7 +186,7 @@ export default function RegisterUser() {
                             validationRules={{
                                 validate: {
                                     mp3: file => {
-                                        if (file[0].type !== 'audio/mpeg') {
+                                        if (file.length > 0 && file[0].type !== 'audio/mpeg') {
                                             return 'Please upload an MP3 file';
                                         }
                                         return true;
@@ -205,7 +211,7 @@ export default function RegisterUser() {
                         </label>
 
                         <Button buttonType="onSubmit" onClick={handleSubmit} button_content="Send"
-                                bigOrSmall="small-button"/>
+                                bigOrSmall="small-button" />
                     </form>
                 </article>
             </section>

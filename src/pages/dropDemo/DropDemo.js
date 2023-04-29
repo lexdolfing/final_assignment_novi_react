@@ -30,7 +30,7 @@ export default function DropDemo() {
                     <h1 className={styles.formTitle}>Demo drop</h1>
                     <p className={styles.info}>Drop your demo here. <br/>
                         We will contact you within 14 days.</p>
-                    <form onSubmit={handleSubmit(handleFormSubmit)}>
+                    <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
 
                         <FormInput htmlFor="artist-name-field"
                                    labelText="Artist name(s)*"
