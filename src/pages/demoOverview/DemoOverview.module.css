@@ -1,0 +1,37 @@
+.content-container {
+    display: flex;
+    border: 2px solid brown;
+    flex-grow: 1;
+}
+
+.songs-container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid blue;
+    flex-grow: 1;
+}
+
+.sort-by-container {
+    display: flex;
+    border: 2px solid orange;
+}
+
+.demo-container {
+    display: flex;
+    border: 2px solid yellow;
+    min-width: 400px;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.demo-container:first-child, .sort:first-child {
+    text-transform: uppercase;
+    border-bottom: 2px solid white;
+}
+
+.demo-container > span {
+    display: inline-block;
+    width: auto;
+    border: 2px solid deeppink;
+}
+

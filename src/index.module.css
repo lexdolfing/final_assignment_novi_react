@@ -34,7 +34,6 @@ p {
   justify-content: center;
   background-color: black;
   flex-grow: 1;
-  border: 2px solid yellow;
 }
 
 .inner-container {
@@ -43,7 +42,6 @@ p {
   align-items: center;
   flex-shrink: 1;
   flex-grow: 1;
-  border: 2px solid green;
 }
 
 
