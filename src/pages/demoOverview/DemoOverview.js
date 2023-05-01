@@ -3,9 +3,17 @@ import stylesIndex from '../../index.module.css';
 import styles from './DemoOverview.module.css';
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import Footer from "../../components/footer/Footer";
+import Button from "../../components/button/Button";
+import {useNavigate} from "react-router-dom";
 
 
 export default function DemoOverview() {
+    const navigate = useNavigate();
+
+    function replyToDemo() {
+        // navigate('/reply-to-demo')
+    }
+
     return (
         <>
             <body className={stylesIndex['page-body']}>
@@ -13,25 +21,56 @@ export default function DemoOverview() {
             <section className={stylesIndex['outer-container']}>
                 <section className={stylesIndex['inner-container']}>
                     <h1>List of demo's</h1>
-                    <section className={styles['content-container']}>
-                        <div className={styles['songs-container']}>
-                            <article className={styles['demo-container']}>
-                                <span className={styles.reply}>reply</span>
-                                <span className={styles.number}>#</span>
-                                <span className={styles.artist}>artist</span>
-                                <span className={styles.title}>title</span>
-                                <span className={styles.user}>dropped by</span>
-                            </article>
-                            <article>
-                                //map for songs
-                            </article>
 
-                        </div>
-                        <div className={styles['sort-by-container']}>
-                            <span className={styles.sort}>Sort by</span>
-                            <span>testkind</span>
-                        </div>
-                    </section>
+                    <table className={styles.table}>
+                        <thead>
+                        <tr  className={styles['table-header']}>
+                            <th>Reply</th>
+                            <th>#</th>
+                            <th>artist</th>
+                            <th>title</th>
+                            <th>dropped by</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {/*//map for songs, now hardcoded one*/}
+                        <tr onClick={replyToDemo} className={styles['demo-row']}>
+                            <th><Button bigOrSmall="super-small-button" onClick={replyToDemo} button_content="Reply"
+                                        buttonType="button"/></th>
+                            <td>1</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Dolor sit amet consectetur</td>
+                            <td>Lorem Ipsum</td>
+                        </tr>
+                        <tr>
+                            <th><Button bigOrSmall="super-small-button" onClick={replyToDemo} button_content="Reply"
+                                        buttonType="button"/></th>
+                            <td>1</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Dolor sit amet consectetur</td>
+                            <td>Lorem Ipsum</td>
+                        </tr>
+                        <tr>
+                            <th><Button bigOrSmall="super-small-button" onClick={replyToDemo} button_content="Reply"
+                                        buttonType="button"/></th>
+                            <td>1</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Dolor sit amet consectetur</td>
+                            <td>Lorem Ipsum</td>
+                        </tr>
+                        <tr>
+                            <th><Button bigOrSmall="super-small-button" onClick={replyToDemo} button_content="Reply"
+                                        buttonType="button"/></th>
+                            <td>1</td>
+                            <td>Lorem Ipsum</td>
+                            <td>Dolor sit amet consectetur</td>
+                            <td>Lorem Ipsum</td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
                 </section>
             </section>
             <Footer/>

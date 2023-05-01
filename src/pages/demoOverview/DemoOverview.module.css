@@ -1,37 +1,20 @@
-.content-container {
-    display: flex;
-    border: 2px solid brown;
-    flex-grow: 1;
+.table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.songs-container {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid blue;
-    flex-grow: 1;
-}
-
-.sort-by-container {
-    display: flex;
-    border: 2px solid orange;
-}
-
-.demo-container {
-    display: flex;
-    border: 2px solid yellow;
-    min-width: 400px;
-    gap: 20px;
-    align-items: flex-start;
-}
-
-.demo-container:first-child, .sort:first-child {
+.table-header {
+    text-align: left;
     text-transform: uppercase;
     border-bottom: 2px solid white;
 }
 
-.demo-container > span {
-    display: inline-block;
-    width: auto;
-    border: 2px solid deeppink;
+
+
+.demo-row:hover {
+    background-color: darkgray;
 }
 
+.demo-row:visited{
+    border: 1px solid white;
+}
