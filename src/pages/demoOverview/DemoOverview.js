@@ -5,6 +5,8 @@ import NavigationBar from "../../components/navigationBar/NavigationBar";
 import Footer from "../../components/footer/Footer";
 import Button from "../../components/button/Button";
 import {useNavigate} from "react-router-dom";
+import ReactAudioPlayer from "react-audio-player";
+import sampleMp3 from '../../assets/sample-3s.mp3'
 
 
 export default function DemoOverview() {
@@ -71,6 +73,16 @@ export default function DemoOverview() {
 
                     </table>
 
+                </section>
+            </section>
+            <section className={stylesIndex['outer-container']}>
+                <section className={stylesIndex['inner-container']}>
+
+            <ReactAudioPlayer
+                src={sampleMp3}
+                autoPlay={false}
+                controls={true}
+            />
                 </section>
             </section>
             <Footer/>
