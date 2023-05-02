@@ -1,6 +1,85 @@
 @import url('../../fonts.css');
 
+/*TO-DO: deze nog aanpassen naar alleen zichtbaar als functie getoggled is*/
+.default-link, .active-link {
+    display: none;
+}
+
+.navigation_bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: black;
+    position: relative;
+}
+
+.hamburger {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 5px auto;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger:before,
+.hamburger:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger:before {
+    top: -10px;
+}
+
+.hamburger:after {
+    bottom: -10px;
+}
+
+.menu-toggle {
+    background-color: black;
+    border: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.mobile-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border: 2px solid white;
+    background-color: black;
+    right: 20px;
+    top: 30px;
+    padding: 10px;
+    gap: 5px;
+    width: 150px;
+}
+
+.default-mobile-link, .active-mobile-link, .default-link, .active-link {
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+
+
+}
+
+
 @media screen and (min-width: 576px) {
+
+    .menu-toggle {
+        display: none;
+    }
 
 
     .navigation_bar {
@@ -12,11 +91,8 @@
     }
 
     .default-link, .active-link {
-        color: white;
-        text-transform: uppercase;
-        text-decoration: none;
+        display: inline-block;
         position: relative;
-        font-family: 'Roboto', sans-serif;
         font-weight: 400;
         font-size: 20px;
     }
