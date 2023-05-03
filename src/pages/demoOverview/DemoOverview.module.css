@@ -1,0 +1,20 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-header {
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 2px solid white;
+}
+
+
+
+.demo-row:hover {
+    background-color: darkgray;
+}
+
+.demo-row:visited{
+    border: 1px solid white;
+}

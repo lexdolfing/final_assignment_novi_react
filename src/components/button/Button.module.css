@@ -21,3 +21,9 @@
     height: 53px;
     font-size: 14px;
 }
+
+.super-small-button {
+    width: 70px;
+    height: 25px;
+    font-size: 11px;
+}
