@@ -1,5 +1,5 @@
 
-button {
+.big-button, .small-button {
     border: 2px solid white;
     background-color: black;
     color: lightgray;
@@ -11,12 +11,12 @@ button {
 }
 
 
-.big-button{
-    width: 300px;
+.big-button {
+    width: 270px;
     height: 80px;
 }
 
-.small-button{
+.small-button {
     width: 200px;
     height: 53px;
     font-size: 14px;

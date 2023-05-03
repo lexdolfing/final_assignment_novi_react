@@ -1,44 +1,57 @@
-
-@media screen and (min-width: 576px) {
 .first-outer-container {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url('../../assets/Home-page-photo.jpeg');
     background-size: cover;
     background-position: center;
 }
 
-    .first-section {
-        position: relative;
-        height: 60vh;
-        max-width: 800px;
-    }
+.first-section {
+    position: relative;
+    height: 60vh;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+}
 
-    .first-section::after {
-        width: 30px;
-        height: 30px;
-        content: "";
-        border-right:  4px solid white;
-        border-bottom: 4px solid white;
-        border-left: 4px solid transparent;
-        border-top: 4px solid transparent;
-        transform: rotate(45deg);
-        position: absolute;
-        bottom: 15px;
-    }
+.first-section::after {
+    width: 30px;
+    height: 30px;
+    content: "";
+    border-right:  4px solid white;
+    border-bottom: 4px solid white;
+    border-left: 4px solid transparent;
+    border-top: 4px solid transparent;
+    transform: rotate(45deg);
+    position: absolute;
+    bottom: 15px;
+}
+.second-section {
+    height: auto;
+    text-align: justify;
+}
 
-    .second-section {
-        height: auto;
-    }
 
-    .pitch {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-    }
+
+.pitch {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+
+.pitch-paragraph {
+    font-size: 15px;
+}
+
+@media screen and (min-width: 576px) {
 
     .pitch-paragraph {
         max-width: 600px;
-        font-size: 15px;
     }
+
+
+
+
+
 
 
 

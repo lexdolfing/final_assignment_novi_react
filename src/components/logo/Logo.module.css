@@ -7,13 +7,28 @@
     gap: 5px;
 }
 
-.company-name{
-    font-family: 'Iceberg', cursive;
-    text-transform: uppercase;
-    font-size: 20px;
+.sliders-logo {
+    border-radius: 50%;
+    width: 2em;
 }
 
-.sliders-logo {
-    width: 3em;
-    border-radius: 50%;
+.company-name {
+    font-family: 'Iceberg', cursive;
+    text-transform: uppercase;
+    font-size: 15px;
+
+}
+
+@media screen and (min-width: 576px) {
+
+    .company-name {
+
+        font-size: 20px;
+    }
+
+    .sliders-logo {
+        width: 3em;
+
+    }
+
 }
