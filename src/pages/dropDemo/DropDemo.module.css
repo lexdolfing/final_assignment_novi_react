@@ -1,23 +1,6 @@
-.form-container {
-    border: 4px solid white;
-    text-align: left;
-    padding: 10px;
-}
-
-.formTitle {
-    text-transform: uppercase;
-}
-
 p {
 
     font-size: 15px;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border: 2px solid orange;
 }
 
 .info {

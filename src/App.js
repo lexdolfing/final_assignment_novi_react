@@ -8,6 +8,8 @@ import RegisterAdmin from "./pages/registerAdmin/RegisterAdmin";
 import RegisterUser from "./pages/registerUser/RegisterUser";
 import ReplyToDemo from "./pages/replyToDemo/ReplyToDemo";
 import SignIn from "./pages/signIn/SignIn";
+import DJInfo from "./pages/DJInfo/DJInfo";
+import ViewReply from "./pages/viewReply/ViewReply";
 
 function App() {
     return (
@@ -20,6 +22,8 @@ function App() {
                 <Route path="/sign-up" element={<RegisterUser/>}/>
                 <Route path="/reply-to-demo" element={<ReplyToDemo/>}/>
                 <Route path="/sign-in" element={<SignIn/>}/>
+                <Route path="user-info" element={<DJInfo/>}></Route>
+                <Route path={"/view-reply/:id"} element={<ViewReply/>}></Route>
             </Routes>
         </>
     );

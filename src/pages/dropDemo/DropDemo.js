@@ -9,9 +9,6 @@ import FormInput from "../../components/formInput/FormInput";
 
 
 export default function DropDemo() {
-    // Make one string to combine a normal css classname with a modules CSS classname.
-    const innerContainerClassName = `${stylesIndex['inner-container']}`;
-    const formContainerClassName = `${innerContainerClassName} ${styles['form-container']}`;
 
     const {register, handleSubmit, formState: {errors}} = useForm({
         mode: 'onTouched'
@@ -23,14 +20,15 @@ export default function DropDemo() {
 
 
     return (
-        <>
+        <body className={stylesIndex['page-body']}>
             <NavigationBar/>
             <section className={stylesIndex['outer-container']}>
-                <article className={formContainerClassName}>
-                    <h1 className={styles.formTitle}>Demo drop</h1>
+                <article className={stylesIndex['inner-container']}>
+                    <article className={stylesIndex['form-container']}>
+                    <h1 className={stylesIndex['form-title']}>Demo drop</h1>
                     <p className={styles.info}>Drop your demo here. <br/>
                         We will contact you within 14 days.</p>
-                    <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
+                    <form onSubmit={handleSubmit(handleFormSubmit)} className={stylesIndex.form}>
 
                         <FormInput htmlFor="artist-name-field"
                                    labelText="Artist name(s)*"
@@ -121,9 +119,10 @@ export default function DropDemo() {
                         <Button buttonType="onSubmit" onClick={handleSubmit} button_content="Send"
                                 bigOrSmall="small-button"/>
                     </form>
+                    </article>
                 </article>
             </section>
             <Footer/>
-        </>
+        </body>
     )
 }

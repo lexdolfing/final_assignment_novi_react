@@ -8,10 +8,10 @@ import {useNavigate} from "react-router-dom";
 import ReactAudioPlayer from "react-audio-player";
 import sampleMp3 from '../../assets/sample-3s.mp3'
 import axios from "axios";
+import DemoOverviewTable from "../../components/demoOverviewTable/DemoOverviewTable";
 
 
 export default function DemoOverview() {
-    const navigate = useNavigate();
     const [demodata, setDemoData] = useState([])
     const [mp3Selected, setMp3Selected] = useState(sampleMp3)
 
@@ -36,45 +36,23 @@ export default function DemoOverview() {
             }
         }
 
-        void fetchData()
+        void fetchData();
 
     }, [])
 
     return (
-        <>
             <body className={stylesIndex['page-body']}>
             <NavigationBar/>
             <section className={stylesIndex['outer-container']}>
                 <section className={stylesIndex['inner-container']}>
                     <h1>List of demo's</h1>
 
-                    <table className={styles.table}>
-                        <thead>
-                        <tr className={styles['table-header']}>
-                            <th>Reply</th>
-                            <th>#</th>
-                            <th>artist</th>
-                            <th>title</th>
-                            <th>song inspiration</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {demodata.map((demo) => {
-                            return (
-                                <tr key={demo.id} className={styles['demo-row']} onClick={() => playSong(demo.mp3File)}>
-                                    <th><Button bigOrSmall="super-small-button" onClick={() => replyToDemo(demo.id)}
-                                                button_content="Reply"
-                                                buttonType="button"/></th>
-                                    <td>{demo.id}</td>
-                                    <td>{demo.artistName}</td>
-                                    <td>{demo.songName}</td>
-                                    <td>{demo.songElaboration}</td>
-                                </tr>
-                            )
-                        })}
-                        </tbody>
-
-                    </table>
+                    <DemoOverviewTable
+                    demodata={demodata}
+                    isDJ={false}
+                    replyToDemo={() => replyToDemo()}
+                    playSong={() => playSong()}
+                    />
 
                 </section>
             </section>
@@ -90,6 +68,5 @@ export default function DemoOverview() {
             </section>
             <Footer/>
             </body>
-        </>
     )
 }
