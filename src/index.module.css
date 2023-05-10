@@ -49,6 +49,7 @@ p {
   margin: 0 20px 0 20px;
   gap: 20px;
   /*border: 2px solid green;*/
+<<<<<<< HEAD
 
 }
 
@@ -71,6 +72,8 @@ p {
 .link {
   color: darkgray;
   cursor: pointer;
+=======
+>>>>>>> bde9e4324ed17943bc5efcd625c82ac8b3ec1267
 }
 
 
