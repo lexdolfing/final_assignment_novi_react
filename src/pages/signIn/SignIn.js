@@ -8,6 +8,7 @@ import {useForm} from "react-hook-form";
 import FormInput from "../../components/formInput/FormInput";
 import Button from "../../components/button/Button";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 
 export default function SignIn() {
@@ -23,13 +24,32 @@ export default function SignIn() {
     });
 
 
-    function handleFormSubmit(data) {
+    async function handleFormSubmit(data) {
         console.log(data);
+        try {
+            await login(data);
+            // console.log(token);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    async function login(data) {
+        try {
+            const result = await axios.post('http://localhost:8081/authenticate', {
+                username : data.email,
+                password : data.password,
+            })
+            console.log(result.data);
+            console.log("deze functie is wel aangeroepen")
+            return result.data;
+        } catch(e){
+            console.error(e)
+        }
     }
 
     function handleNavigate() {
         navigate('/sign-up')
-
     }
 
 

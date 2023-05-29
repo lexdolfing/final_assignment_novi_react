@@ -8,6 +8,8 @@ import Footer from "../../components/footer/Footer";
 import {useForm} from "react-hook-form";
 import FormInput from "../../components/formInput/FormInput";
 import Button from "../../components/button/Button";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 export default function RegisterUser() {
     const {
@@ -19,8 +21,29 @@ export default function RegisterUser() {
         mode: 'onTouched'
     });
 
+    const navigate = useNavigate();
+
     function handleFormSubmit(data) {
         console.log(data);
+        void createDJ();
+        async function createDJ() {
+            try {
+                const result = await axios.post("http://localhost:8081/dj", {
+                    firstName : data["first-name"],
+                    lastName : data["last-name"],
+                    artistName : data["artist-name"],
+                    password : data.password,
+                    email : data.email,
+                })
+                console.log(result)
+                if (result.status === 200) {
+                    navigate("/sign-in")
+                }
+            } catch (e) {
+                console.error(e);
+            }
+
+        }
     }
 
     return (
