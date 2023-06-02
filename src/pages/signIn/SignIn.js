@@ -1,7 +1,7 @@
 import styles from './SignIn.module.css';
 import stylesIndex from '../../index.module.css'
 import stylesForm from '../dropDemo/DropDemo.module.css'
-import React from "react";
+import React, {useContext} from "react";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import Footer from "../../components/footer/Footer";
 import {useForm} from "react-hook-form";
@@ -9,10 +9,12 @@ import FormInput from "../../components/formInput/FormInput";
 import Button from "../../components/button/Button";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import {AuthContext} from "../../contexts/AuthContext";
 
 
 export default function SignIn() {
     const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
     const {
         register,
@@ -27,22 +29,22 @@ export default function SignIn() {
     async function handleFormSubmit(data) {
         console.log(data);
         try {
-            await login(data);
-            // console.log(token);
+            const token = await signIn(data);
+            login(token);
+            navigate('/drop-your-demo')
         } catch (e) {
             console.error(e);
         }
     }
 
-    async function login(data) {
+    async function signIn(data) {
         try {
             const result = await axios.post('http://localhost:8081/authenticate', {
                 username : data.email,
                 password : data.password,
             })
-            console.log(result.data);
-            console.log("deze functie is wel aangeroepen")
-            return result.data;
+            // console.log(result.data);
+            return result.data.jwt;
         } catch(e){
             console.error(e)
         }
