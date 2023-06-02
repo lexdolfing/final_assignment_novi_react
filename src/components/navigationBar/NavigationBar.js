@@ -55,13 +55,31 @@ export default function NavigationBar() {
                     <div className={styles['mobile-menu']}>
                         <NavLink to="/"
                                  className={({isActive}) => isActive ? styles['active-mobile-link'] : styles['default-mobile-link']}>Home</NavLink>
+                        {user && user.username.includes("elevaterecords.nl") ?
+                            <NavLink to="/demo-overview"
+                                     className={({isActive}) => isActive ? styles['active-mobile-link'] : styles['default-mobile-link']}>Demo Overview</NavLink>
+                            :
                         <NavLink to="/drop-your-demo"
                                  className={({isActive}) => isActive ? styles['active-mobile-link'] : styles['default-mobile-link']}>Demo
                             Drop</NavLink>
+                        }
+                        {isAuthenticated ?
+                            <><NavLink to='/sign-out'
+                                      className={({isActive}) => isActive ? styles['active-mobile-link'] : styles['default-mobile-link']}>Log
+                                Out</NavLink>
+                                <NavLink to='/user-info'
+                                     className={({isActive}) => isActive ? styles['active-mobile-link'] : styles['default-mobile-link']}>My
+                                Account</NavLink>
+                            </>
+
+                            :
+                            <>
                         <NavLink to="/sign-in"
                                  className={({isActive}) => isActive ? styles['active-mobile-link'] : styles['default-mobile-link']}>Login</NavLink>
                         <NavLink to="/sign-up"
                                  className={({isActive}) => isActive ? styles['active-mobile-link'] : styles['default-mobile-link']}>Register</NavLink>
+                            </>
+                        }
                     </div>
                 }
             </button>
