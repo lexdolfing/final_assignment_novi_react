@@ -47,7 +47,7 @@ export default function RegisterUser() {
     }
 
     return (
-        <body className={stylesIndex['page-body']}>
+        <section className={stylesIndex['page-body']}>
             <NavigationBar/>
             <section className={stylesIndex['outer-container']}>
                 <article className={stylesIndex['inner-container']}>
@@ -168,33 +168,6 @@ export default function RegisterUser() {
                                 errors={errors}
                                 className='input'
                             />
-                            <FormInput
-                                htmlFor="profile-picture-field"
-                                labelText="Profile picture"
-                                type="file"
-                                id="profile-picture-field"
-                                register={register}
-                                errors={errors}
-                                registerCallback="profile-picture"
-                                validationRules={{
-                                    validate: {
-                                        maxSize: (fileList) => {
-                                            if (fileList.length === 0) {
-                                                return true; // return true if no file is uploaded
-                                            }
-                                            return fileList[0].size <= 5 * 1024 * 1024 || 'File size should be less than 5 MB';
-                                        },
-                                        allowedTypes: (fileList) => {
-                                            if (fileList.length === 0) {
-                                                return true; // return true if no file is uploaded
-                                            }
-                                            return ['image/jpeg', 'image/png'].includes(fileList[0].type) || 'Only JPEG and PNG files are allowed';
-                                        },
-                                    },
-                                }}
-                                className='input'
-                                accept=".jpg, .jpeg, .png, .gif"
-                            />
 
                             <FormInput
                                 htmlFor="song-file-field"
@@ -239,6 +212,6 @@ export default function RegisterUser() {
                 </article>
             </section>
             <Footer/>
-        </body>
+        </section>
     )
 }

@@ -31,7 +31,7 @@ export default function SignIn() {
         try {
             const token = await signIn(data);
             login(token);
-            navigate('/drop-your-demo')
+            console.log("sign-in succesfull")
         } catch (e) {
             console.error(e);
         }

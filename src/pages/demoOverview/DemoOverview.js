@@ -41,7 +41,7 @@ export default function DemoOverview() {
     }, [])
 
     return (
-            <body className={stylesIndex['page-body']}>
+            <section className={stylesIndex['page-body']}>
             <NavigationBar/>
             <section className={stylesIndex['outer-container']}>
                 <section className={stylesIndex['inner-container']}>
@@ -67,6 +67,6 @@ export default function DemoOverview() {
                 </section>
             </section>
             <Footer/>
-            </body>
+            </section>
     )
 }

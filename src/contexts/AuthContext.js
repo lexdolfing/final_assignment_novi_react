@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 export const AuthContext = createContext({});
 
 function AuthContextProvider({ children }) {
+    const [redirectUrl, setRedirectUrl] = useState('/drop-your-demo');
     const [isAuthenticated, toggleIsAuthenticated] = useState({
         isAuthenticated: false,
         user: null,
@@ -34,7 +35,9 @@ function AuthContextProvider({ children }) {
     function login(token) {
         localStorage.setItem('token', token);
         const tokenDecoded = jwt_decode(token);
-        fetchUserData(token, tokenDecoded, '/drop-your-demo')
+        fetchUserData(token, tokenDecoded)
+        console.log("user is logged in")
+        console.log(token)
     }
 
     function logout() {
@@ -48,7 +51,7 @@ function AuthContextProvider({ children }) {
         navigate('/');
     }
 
-    async function fetchUserData(token, tokenDecoded, redirectUrl) {
+    async function fetchUserData(token, tokenDecoded) {
         try {
             const result = await axios.get(`http://localhost:8081/users/${tokenDecoded.sub}`, {
                 headers: {
@@ -68,6 +71,10 @@ function AuthContextProvider({ children }) {
             });
 
             if(redirectUrl) {
+                if (tokenDecoded.sub.includes('@elevaterecords.nl')) {
+                    setRedirectUrl('/demo-overview')
+                    console.log(redirectUrl);
+                }
                 navigate(redirectUrl);
             }
 
