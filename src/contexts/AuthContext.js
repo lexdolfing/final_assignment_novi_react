@@ -72,10 +72,14 @@ function AuthContextProvider({ children }) {
 
             if(redirectUrl) {
                 if (tokenDecoded.sub.includes('@elevaterecords.nl')) {
-                    setRedirectUrl('/demo-overview')
+                    setRedirectUrl('/demo-overview');
                     console.log(redirectUrl);
+                    navigate(redirectUrl)
+                } else {
+                    setRedirectUrl('/drop-your-demo');
+                    navigate(redirectUrl)
                 }
-                navigate(redirectUrl);
+
             }
 
         } catch(e) {

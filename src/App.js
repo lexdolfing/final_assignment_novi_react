@@ -11,6 +11,7 @@ import SignIn from "./pages/signIn/SignIn";
 import DJInfo from "./pages/DJInfo/DJInfo";
 import ViewReply from "./pages/viewReply/ViewReply";
 import {AuthContext} from "./contexts/AuthContext";
+import SignOut from "./pages/signOut/SignOut";
 
 function App() {
     const {isAuthenticated} = useContext(AuthContext);
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/sign-up" element={<RegisterUser/>}/>
                 <Route path="/reply-to-demo" element={<ReplyToDemo/>}/>
                 <Route path="/sign-in" element={<SignIn/>}/>
+                <Route path='/sign-out' element={<SignOut/>}/>
                 <Route path="/user-info" element={isAuthenticated ? <DJInfo /> : <Navigate to="/" />} />
                 <Route path={"/view-reply/:id"} element={<ViewReply/>}></Route>
             </Routes>

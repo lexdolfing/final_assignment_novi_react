@@ -20,7 +20,7 @@ export default function DropDemo() {
 
 
     return (
-        <body className={stylesIndex['page-body']}>
+        <section className={stylesIndex['page-body']}>
             <NavigationBar/>
             <section className={stylesIndex['outer-container']}>
                 <article className={stylesIndex['inner-container']}>
@@ -123,6 +123,6 @@ export default function DropDemo() {
                 </article>
             </section>
             <Footer/>
-        </body>
+        </section>
     )
 }
