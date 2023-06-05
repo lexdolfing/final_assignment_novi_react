@@ -3,14 +3,18 @@ import styles from './DemoOverviewTable.module.css'
 import Button from "../button/Button";
 import {useNavigate} from "react-router-dom";
 
-export default function DemoOverviewTable({demodata, isDJ, replyToDemo, playSong, seeReply}) {
+export default function DemoOverviewTable({demodata, isDJ, playSong, seeReply}) {
     const navigate = useNavigate();
 
     function seeReply(replyToDemoId) {
         navigate(`/view-reply/:${replyToDemoId}`)
     }
 
-    return(
+    function replyToDemo(demoId) {
+        navigate(`/reply-to-demo/${demoId}`)
+    }
+
+    return (
         <table className={styles.table}>
             <thead>
             <tr className={styles['table-header']}>
@@ -25,9 +29,15 @@ export default function DemoOverviewTable({demodata, isDJ, replyToDemo, playSong
             {demodata.map((demo) => {
                 return (
                     <tr key={demo.id} className={styles['demo-row']} onClick={() => playSong(demo.mp3File)}>
-                        {isDJ ?<th><Button bigOrSmall="super-small-button" onClick={() => seeReply(demo.id)}
-                                           button_content="See reply"
-                                           buttonType="button"/></th>
+                        {/* If user is DJ: show button with See reply (if there is one) or with "no reply yet"
+                        Is user is no DJ (but admin) show button with "Reply"*/}
+                        {isDJ ? (demo.replyToDemo ?
+                                <th><Button bigOrSmall="super-small-button" onClick={() => seeReply(demo.id)}
+                                            button_content="See reply"
+                                            buttonType="button"/></th> :
+                                <th><Button bigOrSmall="super-small-button"
+                                            button_content="No reply yet"
+                                            buttonType="button"/></th>)
                             :
                             <th><Button bigOrSmall="super-small-button" onClick={() => replyToDemo(demo.id)}
                                         button_content="Reply"

@@ -35,7 +35,7 @@ export default function RegisterAdmin() {
                 })
                 console.log(result)
                 if (result.status === 200) {
-                    navigate("/demo-overview")
+                    navigate("/sign-in")
                 }
             } catch (e) {
                 console.error(e);

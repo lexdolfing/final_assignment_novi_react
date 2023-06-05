@@ -10,12 +10,6 @@ export default function NavigationBar() {
 
     const [displayMenu, toggleDisplayMenu] = useState(false);
     const {isAuthenticated, user} = useContext(AuthContext);
-    console.log(isAuthenticated)
-    console.log("hieronder user.username")
-    console.log(user);
-    const token = localStorage.getItem('token');
-    console.log(token)
-    const [tokenDecoded, setTokenDecoded] = useState()
 
 
     return (

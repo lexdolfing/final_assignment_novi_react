@@ -17,7 +17,7 @@ export default function Home() {
     }
 
     return (
-        <body className={stylesIndex['page-body']}>
+        <section className={stylesIndex['page-body']}>
         <NavigationBar/>
 
         <section className={classNameOuterContainer}>
@@ -58,6 +58,6 @@ export default function Home() {
         </section>
 
         <Footer/>
-        </body>
+        </section>
     )
 }

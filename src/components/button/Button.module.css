@@ -1,5 +1,5 @@
 
-.big-button, .small-button {
+.big-button, .small-button, .super-small-button {
     border: 2px solid white;
     background-color: black;
     color: lightgray;
@@ -23,7 +23,8 @@
 }
 
 .super-small-button {
-    width: 70px;
+    width: 80px;
     height: 25px;
     font-size: 11px;
+    text-transform: none;
 }

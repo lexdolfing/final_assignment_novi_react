@@ -23,7 +23,7 @@ function App() {
                 <Route path="/drop-your-demo" element={<DropDemo/>}/>
                 <Route path="/admin-registration" element={<RegisterAdmin/>}/>
                 <Route path="/sign-up" element={<RegisterUser/>}/>
-                <Route path="/reply-to-demo" element={<ReplyToDemo/>}/>
+                <Route path="/reply-to-demo/:demoId" element={<ReplyToDemo/>}/>
                 <Route path="/sign-in" element={<SignIn/>}/>
                 <Route path='/sign-out' element={<SignOut/>}/>
                 <Route path="/user-info" element={isAuthenticated ? <DJInfo /> : <Navigate to="/" />} />

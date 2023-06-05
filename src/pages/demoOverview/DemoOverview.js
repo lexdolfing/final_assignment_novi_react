@@ -17,10 +17,9 @@ export default function DemoOverview() {
     const [mp3Selected, setMp3Selected] = useState(sampleMp3);
     const authContext = useContext(AuthContext);
     const token = localStorage.getItem('token');
+    const navigate = useNavigate();
 
-    function replyToDemo(demoId) {
-        // Hier moet link naar pagina gaan met dynamische link naar reply-to-demo/{demoId}
-    }
+
 
     function playSong(mp3File) {
         setMp3Selected(mp3File);
@@ -31,7 +30,7 @@ export default function DemoOverview() {
 
         async function fetchData() {
             try {
-                const response = await axios.get('http://localhost:8081/demos', {
+                const response = await axios.get(`http://localhost:8081/demos`, {
                     headers: {
                         "Content-type" : "application/json",
                         Authorization : `Bearer ${token}`,
@@ -58,7 +57,6 @@ export default function DemoOverview() {
                     <DemoOverviewTable
                     demodata={demodata}
                     isDJ={false}
-                    replyToDemo={() => replyToDemo()}
                     playSong={() => playSong()}
                     />
 
