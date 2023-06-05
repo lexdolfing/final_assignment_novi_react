@@ -47,7 +47,7 @@ export default function RegisterUser() {
     }
 
     return (
-        <body className={stylesIndex['page-body']}>
+        <section className={stylesIndex['page-body']}>
             <NavigationBar/>
             <section className={stylesIndex['outer-container']}>
                 <article className={stylesIndex['inner-container']}>
@@ -168,69 +168,6 @@ export default function RegisterUser() {
                                 errors={errors}
                                 className='input'
                             />
-                            <FormInput
-                                htmlFor="profile-picture-field"
-                                labelText="Profile picture"
-                                type="file"
-                                id="profile-picture-field"
-                                register={register}
-                                errors={errors}
-                                registerCallback="profile-picture"
-                                validationRules={{
-                                    validate: {
-                                        maxSize: (fileList) => {
-                                            if (fileList.length === 0) {
-                                                return true; // return true if no file is uploaded
-                                            }
-                                            return fileList[0].size <= 5 * 1024 * 1024 || 'File size should be less than 5 MB';
-                                        },
-                                        allowedTypes: (fileList) => {
-                                            if (fileList.length === 0) {
-                                                return true; // return true if no file is uploaded
-                                            }
-                                            return ['image/jpeg', 'image/png'].includes(fileList[0].type) || 'Only JPEG and PNG files are allowed';
-                                        },
-                                    },
-                                }}
-                                className='input'
-                                accept=".jpg, .jpeg, .png, .gif"
-                            />
-
-                            <FormInput
-                                htmlFor="song-file-field"
-                                labelText="First demo (optional) in .mp3"
-                                type="file"
-                                id="song-file-field"
-                                register={register}
-                                errors={errors}
-                                registerCallback="song-file"
-                                validationRules={{
-                                    validate: {
-                                        mp3: file => {
-                                            if (file.length > 0 && file[0].type !== 'audio/mpeg') {
-                                                return 'Please upload an MP3 file';
-                                            }
-                                            return true;
-                                        }
-                                    },
-                                }}
-                                className='input'
-                            />
-                            <label htmlFor="demo-informarion-field">
-                                Additional information about your demo
-                                <textarea id="demo-information-field" cols="30" rows="10"
-                                          className={stylesForm.textarea}
-                                          placeholder="Tell us about what inspired you in producing this demo and what makes it unique"
-                                          {...register("demo-information", {
-                                              maxLength: {
-                                                  value: 1000,
-                                                  message: "message can only contain 1000 signs",
-                                              }
-                                          })}>
-                        </textarea>
-                                {errors["demo-information"] &&
-                                    <p className={stylesFormInput['error-message']}>{errors["demo-information"].message}</p>}
-                            </label>
 
                             <Button buttonType="onSubmit" onClick={handleSubmit} button_content="Send"
                                     bigOrSmall="small-button"/>
@@ -239,6 +176,6 @@ export default function RegisterUser() {
                 </article>
             </section>
             <Footer/>
-        </body>
+        </section>
     )
 }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import stylesIndex from '../../index.module.css';
 import styles from './DemoOverview.module.css';
 import NavigationBar from "../../components/navigationBar/NavigationBar";
@@ -9,11 +9,14 @@ import ReactAudioPlayer from "react-audio-player";
 import sampleMp3 from '../../assets/sample-3s.mp3'
 import axios from "axios";
 import DemoOverviewTable from "../../components/demoOverviewTable/DemoOverviewTable";
+import {AuthContext} from "../../contexts/AuthContext";
 
 
 export default function DemoOverview() {
-    const [demodata, setDemoData] = useState([])
-    const [mp3Selected, setMp3Selected] = useState(sampleMp3)
+    const [demodata, setDemoData] = useState([]);
+    const [mp3Selected, setMp3Selected] = useState(sampleMp3);
+    const authContext = useContext(AuthContext);
+    const token = localStorage.getItem('token');
 
     function replyToDemo(demoId) {
         // Hier moet link naar pagina gaan met dynamische link naar reply-to-demo/{demoId}
@@ -28,7 +31,12 @@ export default function DemoOverview() {
 
         async function fetchData() {
             try {
-                const response = await axios.get('http://localhost:8081/demos');
+                const response = await axios.get('http://localhost:8081/demos', {
+                    headers: {
+                        "Content-type" : "application/json",
+                        Authorization : `Bearer ${token}`,
+                    }
+                });
                 console.log(response);
                 setDemoData(response.data);
             } catch (e) {
@@ -41,7 +49,7 @@ export default function DemoOverview() {
     }, [])
 
     return (
-            <body className={stylesIndex['page-body']}>
+            <section className={stylesIndex['page-body']}>
             <NavigationBar/>
             <section className={stylesIndex['outer-container']}>
                 <section className={stylesIndex['inner-container']}>
@@ -67,6 +75,6 @@ export default function DemoOverview() {
                 </section>
             </section>
             <Footer/>
-            </body>
+            </section>
     )
 }
