@@ -27,6 +27,7 @@ export default function DJInfo() {
                     },
                 });
                 console.log("Hieronder de data van de DJ");
+                console.log(djResponse.data)
                 setDjData(djResponse.data);
 
                 const demoResponse = await axios.get(`http://localhost:8081/demos/mydemos/${djResponse.data.id}`, {
@@ -62,12 +63,16 @@ export default function DJInfo() {
                     <h3>Full name</h3>
                     <p>{djData.firstName} {djData.lastName}</p>
 
-                    <h1>Here is a list of demo's for you my dear</h1>
-                    <DemoOverviewTable
+                    <h1>Below you find a list of demo's you dropped</h1>
+
+                    {demodata ? <DemoOverviewTable
                         demodata={demodata}
                         isDJ={true}
-                        seeReply={demodata.rereplyToDemoId}
-                    />
+                        seeReply={demodata.rereplyToDemoId}/>
+                        :
+                        <p>No demo's dropped yet. You can drop a demo <a href="/drop-your-demo">here</a></p>
+                    }
+
                 </section>
             </section>
             <Footer/>

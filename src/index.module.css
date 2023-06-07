@@ -73,6 +73,12 @@ p {
   cursor: pointer;
 }
 
+.textarea {
+  width: 100%;
+  padding: 5px;
+  color: black;
+}
+
 
 /*Design for mobile*/
 

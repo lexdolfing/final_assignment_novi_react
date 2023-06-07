@@ -21,9 +21,22 @@ export default function DemoOverview() {
 
 
 
-    function playSong(mp3File) {
-        setMp3Selected(mp3File);
-        console.log(mp3File);
+    function playSong(fileName, demoId) {
+        async function fetchFileUrl(fileName) {
+            try {
+                const response = await axios.get(`http://localhost:8081/demos/${demoId}/download`, {
+                    responseType: "blob",
+                });
+                const file = new Blob([response.data], { type: response.headers["content-type"]});
+                const fileUrl = URL.createObjectURL(file);
+                setMp3Selected(fileUrl);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        void fetchFileUrl();
+
     }
 
     useEffect(() => {
@@ -57,7 +70,7 @@ export default function DemoOverview() {
                     <DemoOverviewTable
                     demodata={demodata}
                     isDJ={false}
-                    playSong={() => playSong()}
+                    playSong={playSong}
                     />
 
                 </section>

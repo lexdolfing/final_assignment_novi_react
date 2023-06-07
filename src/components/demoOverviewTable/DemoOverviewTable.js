@@ -28,7 +28,7 @@ export default function DemoOverviewTable({demodata, isDJ, playSong, seeReply}) 
             <tbody>
             {demodata.map((demo) => {
                 return (
-                    <tr key={demo.id} className={styles['demo-row']} onClick={() => playSong(demo.mp3File)}>
+                    <tr key={demo.id} className={styles['demo-row']} onClick={() => playSong(demo.fileName, demo.id)}>
                         {/* If user is DJ: show button with See reply (if there is one) or with "no reply yet"
                         Is user is no DJ (but admin) show button with "Reply"*/}
                         {isDJ ? (demo.replyToDemo ?
