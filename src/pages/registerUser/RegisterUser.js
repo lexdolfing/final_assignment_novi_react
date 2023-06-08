@@ -1,8 +1,6 @@
-import styles from './RegisterUser.module.css';
-import stylesForm from '../dropDemo/DropDemo.module.css'
 import stylesIndex from '../../index.module.css'
-import stylesFormInput from '../../components/formInput/FormInput.module.css'
-import React from "react";
+import stylesSignIn from '../signIn/SignIn.module.css'
+import React, {useState} from "react";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import Footer from "../../components/footer/Footer";
 import {useForm} from "react-hook-form";
@@ -22,6 +20,7 @@ export default function RegisterUser() {
     });
 
     const navigate = useNavigate();
+    const [registerError, toggleRegisterError] = useState(false);
 
     function handleFormSubmit(data) {
         console.log(data);
@@ -41,6 +40,7 @@ export default function RegisterUser() {
                 }
             } catch (e) {
                 console.error(e);
+                toggleRegisterError(true);
             }
 
         }
@@ -168,6 +168,8 @@ export default function RegisterUser() {
                                 errors={errors}
                                 className='input'
                             />
+
+                            {registerError && <p className={stylesSignIn.error}>Email already used, please log in</p>}
 
                             <Button buttonType="onSubmit" onClick={handleSubmit} button_content="Send"
                                     bigOrSmall="small-button"/>

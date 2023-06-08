@@ -8,7 +8,7 @@ import RegisterAdmin from "./pages/registerAdmin/RegisterAdmin";
 import RegisterUser from "./pages/registerUser/RegisterUser";
 import ReplyToDemo from "./pages/replyToDemo/ReplyToDemo";
 import SignIn from "./pages/signIn/SignIn";
-import DJInfo from "./pages/DJInfo/DJInfo";
+import UserInfo from "./pages/userInfo/UserInfo";
 import ViewReply from "./pages/viewReply/ViewReply";
 import {AuthContext} from "./contexts/AuthContext";
 import SignOut from "./pages/signOut/SignOut";
@@ -26,7 +26,7 @@ function App() {
                 <Route path="/reply-to-demo/:demoId" element={isAuthenticated ? <ReplyToDemo/> : <Navigate to="/"/> }/>
                 <Route path="/sign-in" element={<SignIn/>}/>
                 <Route path='/sign-out' element={<SignOut/>}/>
-                <Route path="/user-info" element={isAuthenticated ? <DJInfo /> : <Navigate to="/" />} />
+                <Route path="/user-info" element={isAuthenticated ? <UserInfo /> : <Navigate to="/" />} />
                 <Route path={"/view-reply/:id"} element={isAuthenticated ? <ViewReply/> : <Navigate to="/" />}></Route>
             </Routes>
         </>

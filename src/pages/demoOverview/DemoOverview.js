@@ -10,7 +10,7 @@ import sampleMp3 from '../../assets/sample-3s.mp3'
 import axios from "axios";
 import DemoOverviewTable from "../../components/demoOverviewTable/DemoOverviewTable";
 import {AuthContext} from "../../contexts/AuthContext";
-
+import getMp3File from "../../helper functions/getMp3File/GetMp3File";
 
 export default function DemoOverview() {
     const [demodata, setDemoData] = useState([]);
@@ -21,23 +21,25 @@ export default function DemoOverview() {
 
 
 
-    function playSong(fileName, demoId) {
-        async function fetchFileUrl(fileName) {
-            try {
-                const response = await axios.get(`http://localhost:8081/demos/${demoId}/download`, {
-                    responseType: "blob",
-                });
-                const file = new Blob([response.data], { type: response.headers["content-type"]});
-                const fileUrl = URL.createObjectURL(file);
-                setMp3Selected(fileUrl);
-            } catch (e) {
-                console.error(e);
-            }
-        }
+    // function playSong(fileName, demoId) {
+    //     async function fetchFileUrl(fileName) {
+    //         try {
+    //             const response = await axios.get(`http://localhost:8081/demos/${demoId}/download`, {
+    //                 responseType: "blob",
+    //             });
+    //             const file = new Blob([response.data], { type: response.headers["content-type"]});
+    //             const fileUrl = URL.createObjectURL(file);
+    //             setMp3Selected(fileUrl);
+    //         } catch (e) {
+    //             console.error(e);
+    //         }
+    //     }
+    //
+    //     void fetchFileUrl();
+    //
+    // }
 
-        void fetchFileUrl();
 
-    }
 
     useEffect(() => {
 
@@ -70,7 +72,8 @@ export default function DemoOverview() {
                     <DemoOverviewTable
                     demodata={demodata}
                     isDJ={false}
-                    playSong={playSong}
+                    setMp3Selected={setMp3Selected}
+                    getMp3File={getMp3File}
                     />
 
                 </section>

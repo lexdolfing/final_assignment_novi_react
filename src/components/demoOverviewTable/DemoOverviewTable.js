@@ -3,7 +3,7 @@ import styles from './DemoOverviewTable.module.css'
 import Button from "../button/Button";
 import {useNavigate} from "react-router-dom";
 
-export default function DemoOverviewTable({demodata, isDJ, playSong, seeReply}) {
+export default function DemoOverviewTable({demodata, isDJ, getMp3File, seeReply, setMp3Selected}) {
     const navigate = useNavigate();
 
     function seeReply(replyToDemoId) {
@@ -28,7 +28,7 @@ export default function DemoOverviewTable({demodata, isDJ, playSong, seeReply}) 
             <tbody>
             {demodata.map((demo) => {
                 return (
-                    <tr key={demo.id} className={styles['demo-row']} onClick={() => playSong(demo.fileName, demo.id)}>
+                    <tr key={demo.id} className={styles['demo-row']} onClick={() => getMp3File({ demoId: demo.id, setMp3Selected })}>
                         {/* If user is DJ: show button with See reply (if there is one) or with "no reply yet"
                         Is user is no DJ (but admin) show button with "Reply"*/}
                         {isDJ ? (demo.replyToDemo ?
