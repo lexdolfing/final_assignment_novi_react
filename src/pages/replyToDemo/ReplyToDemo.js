@@ -13,6 +13,7 @@ export default function ReplyToDemo() {
     const {demoId} = useParams();
     const token = localStorage.getItem('token');
     const [demoData, setDemoData] = useState();
+    const [hasBeenSent, toggleHasBeenSent] = useState(false)
     const [talentManagerId, setTalentManagerId] = useState();
     const {
         register,
@@ -29,9 +30,9 @@ export default function ReplyToDemo() {
     const replyOption = watch("replyOption");
 
     const defaultValues = {
-        decline: "We are sorry to inform you that we will not consider your demo for further investigation",
-        moreMaterial: "We think your demo is very interesting. Before we consider working with you we would like you to update more material",
-        interview: "We really enjoyed your demo. We would like to invite you to our studio to talk about cooperating with Elevate Studios on your music career",
+        decline: "We are sorry to inform you that we will not consider your demo for further investigation.",
+        moreMaterial: "We think your demo is very interesting. Before we consider working with you we would like you to upload more material.",
+        interview: "We really enjoyed your demo. We would like to invite you to our studio to talk about cooperating with Elevate Studios on your music career.",
         customMessage: ""
     };
 
@@ -71,6 +72,7 @@ export default function ReplyToDemo() {
     function handleFormSubmit(data) {
     void postReply(data)
         async function postReply(data) {
+        try {
             const response = await axios.post(`http://localhost:8081/reply-to-demo/${demoId}`,{
                 adminDecision: data.replyOption,
                 adminComments: data.additionalMessage,
@@ -84,6 +86,13 @@ export default function ReplyToDemo() {
                     }
                 }
                 )
+            console.log(response)
+            if (response.status === 200){
+                toggleHasBeenSent(true);
+            }
+        } catch(e) {
+            console.error(e)
+        }
         }
     }
 
@@ -132,6 +141,7 @@ export default function ReplyToDemo() {
                             <Button button_content="Send" buttonType="onSubmit" onClick={handleSubmit} bigOrSmall="small-button"/>
 
                         </form>
+                        {hasBeenSent && <p>De reactie is succesvol verzonden!</p>}
                     </article>
                 </article>
             </section>

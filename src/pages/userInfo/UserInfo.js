@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useState} from "react";
-import styles from './UserInfo.module.css';
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import Footer from "../../components/footer/Footer";
 import stylesIndex from "../../index.module.css";
@@ -8,7 +7,6 @@ import axios from "axios";
 import {AuthContext} from "../../contexts/AuthContext";
 import ReactAudioPlayer from "react-audio-player";
 import getMp3File from "../../helper functions/getMp3File/GetMp3File";
-import sampleMp3 from "../../assets/sample-3s.mp3";
 
 
 export default function UserInfo() {
@@ -16,7 +14,7 @@ export default function UserInfo() {
     const [userData, setUserData] = useState({});
     const {user, isAuthenticated} = useContext(AuthContext);
     const token = localStorage.getItem('token');
-    const [mp3Selected, setMp3Selected] = useState(sampleMp3);
+    const [mp3Selected, setMp3Selected] = useState();
 
 
 

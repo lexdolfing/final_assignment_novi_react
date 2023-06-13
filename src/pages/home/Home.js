@@ -2,7 +2,7 @@ import styles from './Home.module.css';
 import stylesIndex from '../../index.module.css'
 import React from "react";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
-import {NavLink, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Button from "../../components/button/Button";
 import Footer from "../../components/footer/Footer";
 

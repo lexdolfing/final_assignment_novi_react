@@ -25,8 +25,6 @@ export default function SignIn() {
     } = useForm({
         mode: 'onTouched'
     });
-
-
     async function handleFormSubmit(data) {
         console.log(data);
         try {

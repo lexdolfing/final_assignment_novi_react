@@ -1,6 +1,4 @@
 
-
-
 .footer {
     display: flex;
     flex-direction: row;
@@ -18,7 +16,7 @@
     font-size: 10px;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 900px) {
 
     .footer {
         padding: 0;

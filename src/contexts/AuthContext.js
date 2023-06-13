@@ -6,8 +6,7 @@ import {useNavigate} from "react-router-dom";
 
 export const AuthContext = createContext({});
 
-function AuthContextProvider({ children }) {
-    const [redirectUrl, setRedirectUrl] = useState('/drop-your-demo');
+function AuthContextProvider({children}) {
     const [isAuthenticated, toggleIsAuthenticated] = useState({
         isAuthenticated: false,
         user: null,
@@ -22,7 +21,7 @@ function AuthContextProvider({ children }) {
         // als er een token is, haal opnieuw gebruikersdata op
         if (token) {
             const tokenDecoded = jwt_decode(token);
-             void fetchUserData(token, tokenDecoded);
+            void fetchUserData(token, tokenDecoded);
         } else {
             toggleIsAuthenticated({
                 isAuthenticated: false,
@@ -70,19 +69,15 @@ function AuthContextProvider({ children }) {
                 status: 'done',
             });
 
-            if(redirectUrl) {
-                if (tokenDecoded.sub.includes('@elevaterecords.nl')) {
-                    setRedirectUrl('/demo-overview');
-                    console.log(redirectUrl);
-                    navigate(redirectUrl)
-                } else {
-                    setRedirectUrl('/drop-your-demo');
-                    navigate(redirectUrl)
-                }
 
+            if (tokenDecoded.sub.includes('@elevaterecords.nl')) {
+                navigate('/demo-overview')
+            } else {
+                navigate('/drop-your-demo')
             }
 
-        } catch(e) {
+
+        } catch (e) {
             console.error(e + "error in fetching user data");
             toggleIsAuthenticated({
                 isAuthenticated: false,

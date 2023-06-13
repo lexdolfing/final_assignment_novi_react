@@ -42,7 +42,7 @@
     font-size: 15px;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 900px) {
 
     .pitch-paragraph {
         max-width: 600px;

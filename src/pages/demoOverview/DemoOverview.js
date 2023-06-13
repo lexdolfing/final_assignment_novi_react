@@ -1,45 +1,16 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import stylesIndex from '../../index.module.css';
-import styles from './DemoOverview.module.css';
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import Footer from "../../components/footer/Footer";
-import Button from "../../components/button/Button";
-import {useNavigate} from "react-router-dom";
 import ReactAudioPlayer from "react-audio-player";
-import sampleMp3 from '../../assets/sample-3s.mp3'
 import axios from "axios";
 import DemoOverviewTable from "../../components/demoOverviewTable/DemoOverviewTable";
-import {AuthContext} from "../../contexts/AuthContext";
 import getMp3File from "../../helper functions/getMp3File/GetMp3File";
 
 export default function DemoOverview() {
     const [demodata, setDemoData] = useState([]);
-    const [mp3Selected, setMp3Selected] = useState(sampleMp3);
-    const authContext = useContext(AuthContext);
+    const [mp3Selected, setMp3Selected] = useState();
     const token = localStorage.getItem('token');
-    const navigate = useNavigate();
-
-
-
-    // function playSong(fileName, demoId) {
-    //     async function fetchFileUrl(fileName) {
-    //         try {
-    //             const response = await axios.get(`http://localhost:8081/demos/${demoId}/download`, {
-    //                 responseType: "blob",
-    //             });
-    //             const file = new Blob([response.data], { type: response.headers["content-type"]});
-    //             const fileUrl = URL.createObjectURL(file);
-    //             setMp3Selected(fileUrl);
-    //         } catch (e) {
-    //             console.error(e);
-    //         }
-    //     }
-    //
-    //     void fetchFileUrl();
-    //
-    // }
-
-
 
     useEffect(() => {
 

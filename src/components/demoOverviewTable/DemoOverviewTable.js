@@ -7,7 +7,7 @@ export default function DemoOverviewTable({demodata, isDJ, getMp3File, seeReply,
     const navigate = useNavigate();
 
     function seeReply(replyToDemoId) {
-        navigate(`/view-reply/:${replyToDemoId}`)
+        navigate(`/view-reply/${replyToDemoId}`)
     }
 
     function replyToDemo(demoId) {
@@ -31,7 +31,8 @@ export default function DemoOverviewTable({demodata, isDJ, getMp3File, seeReply,
                     <tr key={demo.id} className={styles['demo-row']} onClick={() => getMp3File({ demoId: demo.id, setMp3Selected })}>
                         {/* If user is DJ: show button with See reply (if there is one) or with "no reply yet"
                         Is user is no DJ (but admin) show button with "Reply"*/}
-                        {isDJ ? (demo.replyToDemo ?
+                        {console.log(demo)}
+                        {isDJ ? (demo.replyToDemoId ?
                                 <th><Button bigOrSmall="super-small-button" onClick={() => seeReply(demo.id)}
                                             button_content="See reply"
                                             buttonType="button"/></th> :

@@ -2,7 +2,6 @@ import React from "react";
 import styles from './Footer.module.css'
 import stylesIndex from '../../index.module.css'
 import Logo from "../logo/Logo";
-import '../../index.module.css'
 
 export default function Footer() {
     return (

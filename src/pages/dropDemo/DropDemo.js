@@ -20,7 +20,6 @@ export default function DropDemo() {
     const {user, isAuthenticated} = useContext(AuthContext);
     const token = localStorage.getItem('token')
     const navigate = useNavigate();
-    const [djId, setDjId] = useState();
 
     async function handleFormSubmit(data) {
         console.log(data);
@@ -32,8 +31,6 @@ export default function DropDemo() {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            console.log("Hieronder de data van de DJ")
-            setDjId(response.data.id)
 
             const responseDemo = await axios.post('http://localhost:8081/demos', {
                 artistName: data['artist-name'],
@@ -47,11 +44,6 @@ export default function DropDemo() {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            console.log('hieronder de response')
-            console.log(responseDemo)
-            console.log(responseDemo.data);
-            console.log("hieronder song-file")
-            console.log(data['song-file'][0]);
 
             // Post request for uploading the file and adding it to the demo
             const formData = new FormData();
@@ -64,8 +56,6 @@ export default function DropDemo() {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            console.log("hieronder de response op mp3 file upload")
-            console.log(responseMP3File)
 
             if (responseDemo.status === 200) {
                 navigate('/user-info')
