@@ -20,7 +20,6 @@ export default function DropDemo() {
     const {user, isAuthenticated} = useContext(AuthContext);
     const token = localStorage.getItem('token')
     const navigate = useNavigate();
-    const [djId, setDjId] = useState();
 
     async function handleFormSubmit(data) {
         console.log(data);
@@ -32,29 +31,33 @@ export default function DropDemo() {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            console.log("Hieronder de data van de DJ")
-            setDjId(response.data.id)
-        } catch (e) {
-            console.error(e);
-        }
 
-        try {
-            const response = await axios.post('http://localhost:8081/demos', {
+            const responseDemo = await axios.post('http://localhost:8081/demos', {
                 artistName: data['artist-name'],
                 songName: data['song-name'],
                 email: data.email,
                 songElaboration: data['demo-information'],
-                djId: djId,
+                djId: response.data.id,
             }, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
             });
-            console.log('hieronder de response')
-            console.log(response)
-            console.log(response.data);
-            if (response.status === 200) {
+
+            // Post request for uploading the file and adding it to the demo
+            const formData = new FormData();
+            formData.append('file', data['song-file'][0]);
+            formData.append('demoId', responseDemo.data.id);
+
+            const responseMP3File = await axios.post('http://localhost:8081/demos/mp3file', formData, {
+                headers: {
+                    'Content-Type' : 'multipart/form-data',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (responseDemo.status === 200) {
                 navigate('/user-info')
             }
         } catch (e) {
@@ -72,6 +75,8 @@ export default function DropDemo() {
                         <h1 className={stylesIndex['form-title']}>Demo drop</h1>
                         <p className={styles.info}>Drop your demo here. <br/>
                             We will contact you within 14 days.</p>
+                        {!isAuthenticated && <p className={styles.info}>You need to be logged in to drop a demo, log in <a href="/sign-in">here</a> or register <a
+                            href="/sign-up">here</a> </p> }
                         <form onSubmit={handleSubmit(handleFormSubmit)} className={stylesIndex.form}>
 
                             <FormInput htmlFor="artist-name-field"
@@ -149,7 +154,7 @@ export default function DropDemo() {
                             />
                             <label htmlFor="demo-informarion-field">
                                 Additional information about your demo
-                                <textarea id="demo-information-field" cols="30" rows="10" className={styles.textarea}
+                                <textarea id="demo-information-field" cols="30" rows="10" className={stylesIndex.textarea}
                                           placeholder="Tell us about what inspired you in producing this demo and what makes it unique"
                                           {...register("demo-information", {
                                               maxLength: {

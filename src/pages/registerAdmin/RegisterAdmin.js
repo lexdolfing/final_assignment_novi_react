@@ -1,7 +1,7 @@
-import styles from './RegisterAdmin.module.css';
-import React from "react";
+import React, {useState} from "react";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import stylesIndex from "../../index.module.css";
+import stylesForm from "../../components/formInput/FormInput.module.css"
 import Footer from "../../components/footer/Footer";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
@@ -9,7 +9,9 @@ import axios from "axios";
 import FormInput from "../../components/formInput/FormInput";
 import Button from "../../components/button/Button";
 
+
 export default function RegisterAdmin() {
+    const [errorEmail, toggleErrorEmail] = useState(false)
     const {
         register,
         handleSubmit,
@@ -36,6 +38,9 @@ export default function RegisterAdmin() {
                 console.log(result)
                 if (result.status === 200) {
                     navigate("/sign-in")
+                }
+                if (result.status === 400) {
+                    toggleErrorEmail(true);
                 }
             } catch (e) {
                 console.error(e);
@@ -117,7 +122,17 @@ export default function RegisterAdmin() {
                                     },
                                     validate: (value) => {
                                         const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-                                        return isValidEmail || 'Fill in a correct e-mail address';
+                                        const isAdminEmail = value.includes('@elevaterecords.nl');
+
+                                        if (isValidEmail) {
+                                            if (isAdminEmail) {
+                                                return true;
+                                            } else {
+                                                return 'This email address does not have admin rights';
+                                            }
+                                        } else {
+                                            return 'Fill in a correct email address';
+                                        }
                                     },
                                 }}
                                 errors={errors}
@@ -165,6 +180,8 @@ export default function RegisterAdmin() {
                                 errors={errors}
                                 className='input'
                             />
+
+                            {errorEmail && <p className={stylesForm['error-message']}>Something went wrong, check if your email has admin rights </p>}
 
                             <Button buttonType="onSubmit" onClick={handleSubmit} button_content="Send"
                             bigOrSmall="small-button" />

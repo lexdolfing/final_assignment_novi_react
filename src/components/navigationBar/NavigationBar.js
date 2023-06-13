@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import Logo from "../logo/Logo";
 import {AuthContext} from "../../contexts/AuthContext";
 import jwt_decode from "jwt-decode";
+import {logDOM} from "@testing-library/react";
 
 
 export default function NavigationBar() {
@@ -17,7 +18,7 @@ export default function NavigationBar() {
             <NavLink to="/"
                      className={({isActive}) => isActive ? styles['active-link'] : styles['default-link']}>Home</NavLink>
             {/*render the rest of the NavBar on basis of authentication*/}
-
+            {console.log(isAuthenticated)}
             {user && user.username.includes("elevaterecords.nl") ?
                 ( <NavLink to="/demo-overview"
                          className={({isActive}) => isActive ? styles['active-link'] : styles['default-link']}>Demo Overview</NavLink>)

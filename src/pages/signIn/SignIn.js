@@ -1,7 +1,7 @@
 import styles from './SignIn.module.css';
 import stylesIndex from '../../index.module.css'
 import stylesForm from '../dropDemo/DropDemo.module.css'
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import Footer from "../../components/footer/Footer";
 import {useForm} from "react-hook-form";
@@ -15,6 +15,7 @@ import {AuthContext} from "../../contexts/AuthContext";
 export default function SignIn() {
     const navigate = useNavigate();
     const { login } = useContext(AuthContext);
+    const [loginError, toggleLoginError] = useState(false);
 
     const {
         register,
@@ -24,8 +25,6 @@ export default function SignIn() {
     } = useForm({
         mode: 'onTouched'
     });
-
-
     async function handleFormSubmit(data) {
         console.log(data);
         try {
@@ -46,6 +45,7 @@ export default function SignIn() {
             // console.log(result.data);
             return result.data.jwt;
         } catch(e){
+            toggleLoginError(true);
             console.error(e)
         }
     }
@@ -110,6 +110,8 @@ export default function SignIn() {
                                 errors={errors}
                                 className='input'
                             />
+                            {loginError && <p className={styles.error}> Email and/or password incorrect</p>}
+
 
                             <Button buttonType="onSubmit" onClick={handleSubmit} button_content="Send"
                                     bigOrSmall="small-button"/>
@@ -118,7 +120,6 @@ export default function SignIn() {
                     </article>
                 </section>
             </section>
-
             <Footer/>
             </section>
     )
