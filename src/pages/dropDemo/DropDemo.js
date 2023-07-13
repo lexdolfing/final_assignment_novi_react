@@ -166,7 +166,7 @@ export default function DropDemo() {
                                 {errors["demo-information"] &&
                                     <p className='error-message'>{errors["demo-information"].message}</p>}
                             </label>
-                            <Button buttonType="onSubmit" onClick={handleSubmit} button_content="Send"
+                            <Button buttonType="submit" onClick={handleSubmit} button_content="Send"
                                     bigOrSmall="small-button"/>
                         </form>
                     </article>
