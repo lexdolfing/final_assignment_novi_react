@@ -54,7 +54,7 @@ export default function ReplyToDemo() {
                 console.log("hieronder demo data")
                 console.log(response.data)
 
-                const responseTalentManager = await axios.get(`http://localhost:8081/talentmanager/userid/${user.id}`, {
+                const responseTalentManager = await axios.get(`http://localhost:8081/talentmanagers/userid/${user.id}`, {
                     headers: {
                         "Content-type": "application/json",
                         Authorization: `Bearer ${token}`,
@@ -73,7 +73,7 @@ export default function ReplyToDemo() {
     void postReply(data)
         async function postReply(data) {
         try {
-            const response = await axios.post(`http://localhost:8081/replies-to-demo/${demoId}`,{
+            const response = await axios.post(`http://localhost:8081/replies-to-demos/${demoId}`,{
                 adminDecision: data.replyOption,
                 adminComments: data.additionalMessage,
                 hasBeenRepliedTo: true,
