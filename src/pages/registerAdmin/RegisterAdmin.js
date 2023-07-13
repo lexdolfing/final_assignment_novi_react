@@ -28,7 +28,7 @@ export default function RegisterAdmin() {
 
         async function createTalentManager() {
             try {
-                const result = await axios.post("http://localhost:8081/talentmanager", {
+                const result = await axios.post("http://localhost:8081/talentmanagers", {
                     managerName: data["manager-name"],
                     firstName: data["first-name"],
                     lastName: data["last-name"],
@@ -36,7 +36,7 @@ export default function RegisterAdmin() {
                     email: data.email,
                 })
                 console.log(result)
-                if (result.status === 200) {
+                if (result.status === 201) {
                     navigate("/sign-in")
                 }
                 if (result.status === 400) {
@@ -59,7 +59,7 @@ export default function RegisterAdmin() {
                         <form onSubmit={handleSubmit(handleFormSubmit)} className={stylesIndex.form}>
                             <FormInput
                             htmlFor="manager-name-field"
-                            labelText="Manager name (for privacy you can opt for an alias here"
+                            labelText="Manager name* (for privacy you can opt for an alias here)"
                             type="text"
                             id="manager-name-field"
                             register={register}
@@ -76,7 +76,7 @@ export default function RegisterAdmin() {
 
                             <FormInput
                             htmlFor="first-name-field"
-                            labelText="First name"
+                            labelText="First name*"
                             type="text"
                             id="first-name-field"
                             register={register}
@@ -110,7 +110,7 @@ export default function RegisterAdmin() {
 
                             <FormInput
                                 htmlFor="email-field"
-                                labelText="E-mail address (must be an @elevaterecords.nl account)"
+                                labelText="E-mail address* (must be an @elevaterecords.nl account)"
                                 type="email"
                                 id="email-field"
                                 register={register}

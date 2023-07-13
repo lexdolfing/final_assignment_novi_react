@@ -25,7 +25,7 @@ export default function DropDemo() {
         console.log(data);
 
         try {
-            const response = await axios.get(`http://localhost:8081/dj/${user.id}`, {
+            const response = await axios.get(`http://localhost:8081/djs/${user.id}`, {
                 headers: {
                     "Content-type": "application/json",
                     Authorization: `Bearer ${token}`,

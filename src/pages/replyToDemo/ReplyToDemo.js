@@ -73,7 +73,7 @@ export default function ReplyToDemo() {
     void postReply(data)
         async function postReply(data) {
         try {
-            const response = await axios.post(`http://localhost:8081/reply-to-demo/${demoId}`,{
+            const response = await axios.post(`http://localhost:8081/replies-to-demo/${demoId}`,{
                 adminDecision: data.replyOption,
                 adminComments: data.additionalMessage,
                 hasBeenRepliedTo: true,

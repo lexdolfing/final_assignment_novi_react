@@ -31,7 +31,7 @@ export default function ViewReply() {
                     console.log(responseDemo);
                     setDemoData(responseDemo.data);
 
-                    const response = await axios.get(`http://localhost:8081/reply-to-demo/${responseDemo.data.replyToDemoId}`, {
+                    const response = await axios.get(`http://localhost:8081/replies-to-demo/${responseDemo.data.replyToDemoId}`, {
                         headers: {
                             "Content-type": "application/json",
                             Authorization: `Bearer ${token}`,

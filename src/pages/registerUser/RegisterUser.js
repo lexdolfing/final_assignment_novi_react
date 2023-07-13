@@ -27,7 +27,7 @@ export default function RegisterUser() {
         void createDJ();
         async function createDJ() {
             try {
-                const result = await axios.post("http://localhost:8081/dj", {
+                const result = await axios.post("http://localhost:8081/djs", {
                     firstName : data["first-name"],
                     lastName : data["last-name"],
                     artistName : data["artist-name"],
@@ -35,7 +35,7 @@ export default function RegisterUser() {
                     email : data.email,
                 })
                 console.log(result)
-                if (result.status === 200) {
+                if (result.status === 201) {
                     navigate("/sign-in")
                 }
             } catch (e) {
