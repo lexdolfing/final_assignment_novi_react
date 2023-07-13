@@ -60,6 +60,7 @@ export default function DemoOverview() {
                     <DemoOverviewTable
                     demodata={demodata}
                     isDJ={false}
+                    showButton={false}
                     setMp3Selected={setMp3Selected}
                     getMp3File={getMp3File}
                     />

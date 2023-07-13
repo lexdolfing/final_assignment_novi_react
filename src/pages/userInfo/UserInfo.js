@@ -15,43 +15,46 @@ export default function UserInfo() {
     const {user, isAuthenticated} = useContext(AuthContext);
     const token = localStorage.getItem('token');
     const [mp3Selected, setMp3Selected] = useState();
+    const [isDJ, toggleIsDJ] = useState(false);
 
 
-
-    useEffect( () => {
+    useEffect(() => {
 
 
         async function fetchData() {
             try {
-                const userResponse = await axios.get(`http://localhost:8081/dj/${user.id}`, {
+                const userResponse = await axios.get(`http://localhost:8081/djs/${user.id}`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                console.log("Hieronder de data van de DJ");
-                console.log(userResponse.data)
                 setUserData(userResponse.data);
+                toggleIsDJ(true);
 
-                const demoResponse = await axios.get(`http://localhost:8081/demos/mydemos/${userResponse.data.id}`, {
+                const demoResponse = await axios.get(`http://localhost:8081/djs/${userResponse.data.id}/mydemos`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                console.log("Hieronder demo data");
-                console.log(demoResponse.data);
                 setDemoData(demoResponse.data);
             } catch {
-                const talentManagerResponse = await axios.get(`http://localhost:8081/talentmanager/userid/${user.id}`, {
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${token}`,
-                        },
-                    });
-                console.log("hieronder de data van de talentmanager")
-                console.log(talentManagerResponse.data);
+                const talentManagerResponse = await axios.get(`http://localhost:8081/talentmanagers/userid/${user.id}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
                 setUserData(talentManagerResponse.data)
+
+                const demoResponse = await axios.get(`http://localhost:8081/talentmanagers/${talentManagerResponse.data.id}/assigned-demos`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                    },
+                });
+                setDemoData(demoResponse.data);
             }
         }
 
@@ -69,27 +72,36 @@ export default function UserInfo() {
                     <h1>Profile information</h1>
                     {userData?.managerName ?
                         <> <h3>Manager name</h3>
-                        <p>{userData.managerName}</p></>
+                            <p>{userData.managerName}</p></>
                         :
                         <>
-                    <h3>Artist name</h3>
-                    <p>{userData.artistName}</p></>
+                            <h3>Artist name</h3>
+                            <p>{userData.artistName}</p></>
                     }
                     <h3>Email address</h3>
                     <p>{user.username}</p>
                     <h3>Full name</h3>
                     <p>{userData.firstName} {userData.lastName}</p>
 
-                    <h1>Below you find a list of demo's you dropped</h1>
-
-                    {demodata ? <DemoOverviewTable
-                        demodata={demodata}
-                        isDJ={true}
-                        seeReply={demodata.rereplyToDemoId}
-                        setMp3Selected={setMp3Selected}
-                        getMp3File={getMp3File}/>
+                    {userData?.managerName ?
+                        <h1>Below you find a list of demo's that are assigned to you</h1>
                         :
-                        <p>No demo's dropped yet. You can drop a demo <a href="/drop-your-demo">here</a></p>
+                        <h1>Below you find a list of demo's you dropped</h1>
+                    }
+
+                    {demodata.length > 0 ?
+                        <DemoOverviewTable
+                            demodata={demodata}
+                            isDJ={isDJ}
+                            showButton={true}
+                            seeReply={demodata.rereplyToDemoId}
+                            setMp3Selected={setMp3Selected}
+                            getMp3File={getMp3File}/>
+                        :
+                        <>{userData?.managerName ?
+                            <p>There are no demo's assigned to you yet</p>
+                            :
+                            <p>No demo's dropped yet. You can drop a demo <a href="/drop-your-demo">here</a></p>}</>
                     }
 
                 </section>
