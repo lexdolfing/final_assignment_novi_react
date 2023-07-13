@@ -35,14 +35,14 @@ export default function DemoOverviewTable({demodata, isDJ, getMp3File, seeReply,
                         {isDJ ? (demo.replyToDemoId ?
                                 <th><Button bigOrSmall="super-small-button" onClick={() => seeReply(demo.id)}
                                             button_content="See reply"
-                                            buttonType="button"/></th> :
+                                            type="button"/></th> :
                                 <th><Button bigOrSmall="super-small-button"
                                             button_content="No reply yet"
-                                            buttonType="button"/></th>)
+                                            type="button"/></th>)
                             :
                             <th><Button bigOrSmall="super-small-button" onClick={() => replyToDemo(demo.id)}
                                         button_content="Reply"
-                                        buttonType="button"/></th>
+                                        type="button"/></th>
                         }
 
                         <td>{demo.id}</td>

@@ -44,7 +44,7 @@ export default function NavigationBar() {
                              className={({isActive}) => isActive ? styles['active-link'] : styles['default-link']}>Register</NavLink>
                 </>
             }
-            <button buttonType="button" className={styles['menu-toggle']} onClick={() => toggleDisplayMenu(!displayMenu)}>
+            <button type="button" className={styles['menu-toggle']} onClick={() => toggleDisplayMenu(!displayMenu)}>
                 <span className={styles.hamburger}></span>
                 {displayMenu &&
                     <div className={styles['mobile-menu']}>

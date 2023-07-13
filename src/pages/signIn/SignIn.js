@@ -113,7 +113,7 @@ export default function SignIn() {
                             {loginError && <p className={styles.error}> Email and/or password incorrect</p>}
 
 
-                            <Button buttonType="submit" onClick={handleSubmit} button_content="Send"
+                            <Button type="submit" onClick={handleSubmit} button_content="Send"
                                     bigOrSmall="small-button"/>
 
                         </form>

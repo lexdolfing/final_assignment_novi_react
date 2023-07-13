@@ -183,7 +183,7 @@ export default function RegisterAdmin() {
 
                             {errorEmail && <p className={stylesForm['error-message']}>Something went wrong, check if your email has admin rights </p>}
 
-                            <Button buttonType="submit" onClick={handleSubmit} button_content="Send"
+                            <Button type="submit" onClick={handleSubmit} button_content="Send"
                             bigOrSmall="small-button" />
                         </form>
                     </article>

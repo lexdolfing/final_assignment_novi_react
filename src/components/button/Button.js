@@ -2,11 +2,11 @@ import React from "react";
 import styles from './Button.module.css';
 
 
-export default function Button({button_content, onClick, bigOrSmall, buttonType}) {
+export default function Button({button_content, onClick, bigOrSmall, type}) {
 
     return (
         <button
-            type={buttonType}
+            type={type}
             onClick={onClick}
             className={`${styles[bigOrSmall]}`}
         >

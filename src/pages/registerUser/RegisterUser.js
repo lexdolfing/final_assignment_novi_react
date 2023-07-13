@@ -171,7 +171,7 @@ export default function RegisterUser() {
 
                             {registerError && <p className={stylesSignIn.error}>Email already used, please log in</p>}
 
-                            <Button buttonType="submit" onClick={handleSubmit} button_content="Send"
+                            <Button type="submit" onClick={handleSubmit} button_content="Send"
                                     bigOrSmall="small-button"/>
                         </form>
                     </article>

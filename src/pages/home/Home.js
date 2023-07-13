@@ -22,7 +22,7 @@ export default function Home() {
 
         <section className={classNameOuterContainer}>
             <article className={classNameInnerContainerOne}>
-                <Button buttonType="button" onClick={handleClick} button_content="Drop your demo here" bigOrSmall="big-button"/>
+                <Button type="button" onClick={handleClick} button_content="Drop your demo here" bigOrSmall="big-button"/>
             </article>
         </section>
 
@@ -53,7 +53,7 @@ export default function Home() {
                         you waiting for? Drop your demo today and let's make some magic together.
                     </p>
                 </article>
-                <Button buttonType="button" onClick={handleClick} button_content="Drop your demo here" bigOrSmall="small-button"/>
+                <Button type="button" onClick={handleClick} button_content="Drop your demo here" bigOrSmall="small-button"/>
             </article>
         </section>
 

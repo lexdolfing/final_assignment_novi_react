@@ -138,7 +138,7 @@ export default function ReplyToDemo() {
                                 </div>
                             )}
 
-                            <Button button_content="Send" buttonType="submit" onClick={handleSubmit} bigOrSmall="small-button"/>
+                            <Button button_content="Send" type="submit" onClick={handleSubmit} bigOrSmall="small-button"/>
 
                         </form>
                         {hasBeenSent && <p>De reactie is succesvol verzonden!</p>}
