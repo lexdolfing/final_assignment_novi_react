@@ -5,6 +5,7 @@ import NavigationBar from "../../components/navigationBar/NavigationBar";
 import {useNavigate} from "react-router-dom";
 import Button from "../../components/button/Button";
 import Footer from "../../components/footer/Footer";
+import Logo from "../../components/logo/Logo";
 
 export default function Home() {
     const navigate = useNavigate();
@@ -29,6 +30,9 @@ export default function Home() {
         <section className={stylesIndex['outer-container']}>
             <article className={classNameInnerContainerTwo}>
                 <h1>About Elevate Records</h1>
+                <Logo
+                smallOrBig="small"
+                />
                 <article className={styles.pitch}>
                     <p className={styles['pitch-paragraph']}>Welcome to Elevate Records, the Dutch record company that's
                         all about helping talented DJs rise

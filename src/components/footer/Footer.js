@@ -9,7 +9,9 @@ export default function Footer() {
 
         <section className={stylesIndex['inner-container']}>
         <footer className={styles.footer}>
-            <Logo />
+            <Logo
+            smallOrBig="big"
+            />
             <p className={styles['company-info']}>
                 Elevate Records inc. <br/>
                 Coolsingel 47F <br/>

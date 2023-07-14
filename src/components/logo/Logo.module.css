@@ -15,20 +15,26 @@
 .company-name {
     font-family: 'Iceberg', cursive;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 12px;
 
+}
+
+.small {
+    width: 1.5em;
 }
 
 @media screen and (min-width: 900px) {
 
     .company-name {
-
         font-size: 20px;
     }
 
     .sliders-logo {
         width: 3em;
+    }
 
+    .small {
+        width: 2.5em;
     }
 
 }

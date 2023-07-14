@@ -26,7 +26,9 @@ export default function NavigationBar() {
                 (<NavLink to="/drop-your-demo"
                          className={({isActive}) => isActive ? styles['active-link'] : styles['default-link']}>Demo Drop</NavLink>)
             }
-            <Logo/>
+            <Logo
+            smallOrBig="big"
+            />
             {isAuthenticated ?
                 <>
                     <NavLink to='/sign-out'
