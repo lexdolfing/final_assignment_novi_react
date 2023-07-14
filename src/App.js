@@ -11,6 +11,7 @@ import UserInfo from "./pages/userInfo/UserInfo";
 import ViewReply from "./pages/viewReply/ViewReply";
 import {AuthContext} from "./contexts/AuthContext";
 import SignOut from "./pages/signOut/SignOut";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
 
 function App() {
     const {isAuthenticated} = useContext(AuthContext);
@@ -18,15 +19,15 @@ function App() {
         <>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/demo-overview" element={isAuthenticated ? <DemoOverview/> : <Navigate to="/"/>}/>
+                <Route path="/demo-overview" element={<PrivateRoute><DemoOverview/></PrivateRoute>}/>
                 <Route path="/drop-your-demo" element={<DropDemo/>}/>
                 <Route path="/admin-registration" element={<RegisterAdmin/>}/>
                 <Route path="/sign-up" element={<RegisterUser/>}/>
-                <Route path="/reply-to-demo/:demoId" element={isAuthenticated ? <ReplyToDemo/> : <Navigate to="/"/> }/>
+                <Route path="/reply-to-demo/:demoId" element={<PrivateRoute><ReplyToDemo/></PrivateRoute>}/>
                 <Route path="/sign-in" element={<SignIn/>}/>
                 <Route path='/sign-out' element={<SignOut/>}/>
-                <Route path="/user-info" element={isAuthenticated ? <UserInfo /> : <Navigate to="/" />} />
-                <Route path={"/view-reply/:id"} element={isAuthenticated ? <ViewReply/> : <Navigate to="/" />}></Route>
+                <Route path="/user-info" element={<PrivateRoute><UserInfo /></PrivateRoute>} />
+                <Route path={"/view-reply/:id"} element={<PrivateRoute><ViewReply/></PrivateRoute>}/>
             </Routes>
         </>
     );
