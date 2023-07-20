@@ -3,7 +3,7 @@ import styles from './DemoOverviewTable.module.css'
 import Button from "../button/Button";
 import {useNavigate} from "react-router-dom";
 
-export default function DemoOverviewTable({demodata, isDJ, getMp3File, showButton, seeReply, setMp3Selected}) {
+export default function DemoOverviewTable({demodata, isDJ, getMp3File, showButton, setMp3Selected}) {
     const navigate = useNavigate();
 
     function seeReply(replyToDemoId) {
@@ -40,14 +40,23 @@ export default function DemoOverviewTable({demodata, isDJ, getMp3File, showButto
                                 {isDJ ? (demo.replyToDemoId ?
                                         <th><Button bigOrSmall="super-small-button" onClick={() => seeReply(demo.id)}
                                                     button_content="See reply"
-                                                    type="button"/></th> :
+                                                    type="button"/></th>
+                                        :
                                         <th><Button bigOrSmall="super-small-button"
                                                     button_content="No reply yet"
-                                                    type="button"/></th>)
+                                                    type="button"/></th>
+                                    )
                                     :
-                                    <th><Button bigOrSmall="super-small-button" onClick={() => replyToDemo(demo.id)}
-                                                button_content="Reply"
-                                                type="button"/></th>}
+                                    (demo.replyToDemoId ?
+                                        <th><Button bigOrSmall="super-small-button"
+                                                    onClick={() => seeReply(demo.id)}
+                                                    button_content="See reply"
+                                                    type="button"/></th>
+                                            :
+                                        <th><Button bigOrSmall="super-small-button" onClick={() => replyToDemo(demo.id)}
+                                                    button_content="Reply"
+                                                    type="button"/></th>
+                                    )}
                             </>
                             :
                             <p></p>

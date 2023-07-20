@@ -18,7 +18,6 @@ export default function NavigationBar() {
             <NavLink to="/"
                      className={({isActive}) => isActive ? styles['active-link'] : styles['default-link']}>Home</NavLink>
             {/*render the rest of the NavBar on basis of authentication*/}
-            {console.log(isAuthenticated)}
             {user && user.username.includes("elevaterecords.nl") ?
                 ( <NavLink to="/demo-overview"
                          className={({isActive}) => isActive ? styles['active-link'] : styles['default-link']}>Demo Overview</NavLink>)

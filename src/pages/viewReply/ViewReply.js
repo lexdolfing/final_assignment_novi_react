@@ -31,7 +31,7 @@ export default function ViewReply() {
                     console.log(responseDemo);
                     setDemoData(responseDemo.data);
 
-                    const response = await axios.get(`http://localhost:8081/replies-to-demo/${responseDemo.data.replyToDemoId}`, {
+                    const response = await axios.get(`http://localhost:8081/replies-to-demos/${responseDemo.data.replyToDemoId}`, {
                         headers: {
                             "Content-type": "application/json",
                             Authorization: `Bearer ${token}`,
@@ -42,7 +42,7 @@ export default function ViewReply() {
 
                     switch (response.data.adminDecision) {
                         case "decline" :
-                            setAdminDecision("Your demo does not a good match with our record label");
+                            setAdminDecision("Decline, your demo is not a good match with our record label");
                             break;
                         case "moreMaterial" :
                             setAdminDecision("We would like you to upload more demo's");
@@ -58,8 +58,6 @@ export default function ViewReply() {
                             break;
 
                     }
-
-
                 } catch (e) {
                     console.error(e);
                 }
