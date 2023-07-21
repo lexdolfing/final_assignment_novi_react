@@ -26,7 +26,6 @@ export default function DemoOverview() {
                         Authorization : `Bearer ${token}`,
                     }
                 });
-                console.log(response);
                 setDemoData(response.data);
             } catch (e) {
                 console.error(e);

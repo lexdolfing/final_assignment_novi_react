@@ -16,9 +16,6 @@ export default function ViewReply() {
 
 
     useEffect(() => {
-            console.log("hieronder id");
-            console.log(id);
-
             async function fetchData() {
                 try {
 
@@ -28,7 +25,6 @@ export default function ViewReply() {
                             Authorization: `Bearer ${token}`,
                         }
                     });
-                    console.log(responseDemo);
                     setDemoData(responseDemo.data);
 
                     const response = await axios.get(`http://localhost:8081/replies-to-demos/${responseDemo.data.replyToDemoId}`, {
@@ -37,7 +33,6 @@ export default function ViewReply() {
                             Authorization: `Bearer ${token}`,
                         }
                     });
-                    console.log(response);
                     setReplyData(response.data);
 
                     switch (response.data.adminDecision) {

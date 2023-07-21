@@ -51,8 +51,6 @@ export default function ReplyToDemo() {
                     }
                 })
                 setDemoData(response.data)
-                console.log("hieronder demo data")
-                console.log(response.data)
 
                 const responseTalentManager = await axios.get(`http://localhost:8081/talentmanagers/userid/${user.id}`, {
                     headers: {
@@ -86,8 +84,7 @@ export default function ReplyToDemo() {
                     }
                 }
                 )
-            console.log(response)
-            if (response.status === 200){
+            if (response.status === 201){
                 toggleHasBeenSent(true);
             }
         } catch(e) {

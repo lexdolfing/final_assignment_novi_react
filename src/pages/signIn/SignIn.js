@@ -26,11 +26,9 @@ export default function SignIn() {
         mode: 'onTouched'
     });
     async function handleFormSubmit(data) {
-        console.log(data);
         try {
             const token = await signIn(data);
             login(token);
-            console.log("sign-in succesfull")
         } catch (e) {
             console.error(e);
         }
@@ -42,7 +40,7 @@ export default function SignIn() {
                 username : data.email,
                 password : data.password,
             })
-            // console.log(result.data);
+
             return result.data.jwt;
         } catch(e){
             toggleLoginError(true);

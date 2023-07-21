@@ -22,8 +22,6 @@ export default function DropDemo() {
     const navigate = useNavigate();
 
     async function handleFormSubmit(data) {
-        console.log(data);
-
         try {
             const response = await axios.get(`http://localhost:8081/djs/${user.id}`, {
                 headers: {
@@ -57,7 +55,7 @@ export default function DropDemo() {
                 },
             });
 
-            if (responseDemo.status === 200) {
+            if (responseMP3File.status === 200) {
                 navigate('/user-info')
             }
         } catch (e) {

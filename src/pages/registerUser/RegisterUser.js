@@ -23,7 +23,6 @@ export default function RegisterUser() {
     const [registerError, toggleRegisterError] = useState(false);
 
     function handleFormSubmit(data) {
-        console.log(data);
         void createDJ();
         async function createDJ() {
             try {
@@ -34,7 +33,6 @@ export default function RegisterUser() {
                     password : data.password,
                     email : data.email,
                 })
-                console.log(result)
                 if (result.status === 201) {
                     navigate("/sign-in")
                 }

@@ -12,9 +12,7 @@ export default function SignOut() {
     useEffect(() => {
         if (token) {
             logout(token);
-            console.log('The SignOut function has been called');
         } else {
-            console.log("else");
             navigate("/sign-in");
         }
     }, []);
